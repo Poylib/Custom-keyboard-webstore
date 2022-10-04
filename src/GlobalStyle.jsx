@@ -16,9 +16,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: white;
-    padding-top: 20vw;
     color : black;
-    /* font-family: 'Noto Sans KR', sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
   }
 `;
 
