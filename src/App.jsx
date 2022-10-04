@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
-import Main from './pages/Main';
 import Theme from './pages/Theme';
+import Home from './pages/Home';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Routes>
-        <Route path='/' element={<Main />} />
+        <Route path='/' element={<Home/>} />
         <Route path='/theme/:id' element={<Theme />} />
       </Routes>
     </>

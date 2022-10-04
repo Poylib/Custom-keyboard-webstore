@@ -1,7 +1,9 @@
+import Items from '../components/Items'
+
 const Home = () => {
   return (
     <>
-      <span>fdsafs</span>
+      <Items/>
     </>
   );
 };
