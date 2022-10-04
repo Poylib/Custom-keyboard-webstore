@@ -2,7 +2,9 @@ import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+
 import Main from './pages/Main';
+import Theme from './pages/Theme';
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path='/' element={<Main />} />
+        <Route path='/theme/:id' element={<Theme />} />
       </Routes>
     </>
   );
