@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-
-import Home from './pages/Home';
 import Theme from './pages/Theme';
-import Header from './components/Header/Header';
-
+import Korean from './pages/keybord/Korean';
+import English from './pages/keybord/English';
 
 function App() {
   return (
@@ -15,6 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/theme/:id' element={<Theme />} />
+        <Route path='/korean' element={<Korean />} />
+        <Route path='/english' element={<English />} />
       </Routes>
     </>
   );

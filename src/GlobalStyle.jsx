@@ -15,10 +15,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    min-width:375px;
     background: white;
     color : black;
     font-family: 'Noto Sans KR', sans-serif;
-  }
+  }  
 `;
 
 export default GlobalStyle;
