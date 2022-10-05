@@ -10,25 +10,25 @@ const StyledButton = styled.button`
   width: 90%;
   margin-top: 24px;
   padding: 8px 0;
-  font-size: 14px;
-  font-weight: 700;
   color: var(--pink);
   background-color: #fff;
-  border-radius: 20px;
   border: 3px solid var(--pink);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
 
   @media screen and (min-width: 540px) and (max-width: 768px) {
     width: 88%;
     padding: 10px 0;
-    font-size: 18px;
     border-radius: 30px;
+    font-size: 18px;
   }
 
   @media screen and (min-width: 768px) {
     width: 86%;
     padding: 12px 0;
-    font-size: 20px;
     border-radius: 40px;
+    font-size: 20px;
   }
 `;
