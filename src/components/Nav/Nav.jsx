@@ -3,26 +3,21 @@ import TitleSearch from './TitleSearch';
 
 import styled from 'styled-components';
 
-const Title = () => {
+const Title = ({ setType }) => {
   return (
     <>
       <Wrapper>
         <TitleSearch />
         <Name>취향대로 골라보기</Name>
-        <CategoryList />
+        <CategoryList setType={setType} />
       </Wrapper>
     </>
   );
 };
 
 const Wrapper = styled.div`
+  width: 100%;
   margin-top: 5vh;
-  max-width: 500px;
-  min-width: 266px;
-  @media screen and (min-device-width: 760px) and (max-device-width: 920px) {
-    max-width: 861px;
-    min-width: 730px;
-  }
 `;
 
 const Name = styled.span`

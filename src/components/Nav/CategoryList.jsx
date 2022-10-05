@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const CategoryList = () => {
+const CategoryList = ({ setType }) => {
   const [category, setCategory] = useState([]);
   const [select, setSelect] = useState('NEW');
 
@@ -33,7 +33,14 @@ const CategoryList = () => {
       <Swiper slidesPerView={'auto'} style={{ top: '20px', width: '100%', overflow: 'hidden' }}>
         {category.map(element => {
           return (
-            <SwiperSlide key={element} onClick={() => setSelect(element)} style={{ width: 'auto', paddingBottom: '10px', paddingRight: '20px' }}>
+            <SwiperSlide
+              key={element}
+              onClick={() => {
+                setSelect(element);
+                setType(element);
+              }}
+              style={{ width: 'auto', paddingBottom: '10px', paddingRight: '20px' }}
+            >
               <CategoryOne style={select === element ? selectCss : nonSelectCss}>{element}</CategoryOne>
             </SwiperSlide>
           );

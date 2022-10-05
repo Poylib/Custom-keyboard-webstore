@@ -16,18 +16,20 @@ const Footer = () => {
 };
 
 const Wrapper = styled.div`
-  position: fixed;   
+  position: fixed;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto;   
   bottom: 0px;
   padding: 1vh 0 1vh 0;
   width: 100%;
-  max-width: 500px;
-  @media screen and (min-device-width: 760px) and (max-device-width: 920px) {
-    max-width: 861px;
+  @media screen and (min-device-width: 769px) {
+    max-width: 650px;
+  }
+  @media screen and (min-device-width: 541px) and (max-device-width: 768px) {
+    max-width: 768px;
   }
   border-top: 1px solid rgb(215, 217, 227);
+  background-color: white;
 `;
 
 export default Footer;

@@ -1,16 +1,18 @@
-import Items from '../components/Items'
+import Items from '../components/Items';
 import styled from 'styled-components';
 
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
-
+import { useState } from 'react';
 
 const Home = () => {
+  const [type, setType] = useState('');
+
   return (
     <>
-      <Items/>
       <Container>
-        <Nav />
+        <Nav setType={setType} />
+        <Items type={type} />
         <Footer />
       </Container>
     </>
@@ -19,10 +21,15 @@ const Home = () => {
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  @media screen and (min-device-width: 769px) {
+    max-width: 650px;
+  }
+  @media screen and (min-device-width: 541px) and (max-device-width: 768px) {
+    max-width: 768px;
+  }
   min-height: 100vh;
-  margin: 0px;
+  margin: 0px auto;
   padding: 10px;
   background-color: rgb(255, 255, 255);
 `;

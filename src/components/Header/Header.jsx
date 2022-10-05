@@ -14,16 +14,16 @@ const Header = () => {
 };
 
 const Wrapper = styled.div`
-  position: fixed;   
-  margin: 0 auto;   
-  left: 1vw;   
+  position: fixed;
+  margin: 0 auto;
+  left: 1vw;
   right: 1vw;
-  padding: 1.5vh 0 1.5vh 0;
-  max-width: 500px;
-  min-width: 274px;
-  @media screen and (min-device-width: 760px) and (max-device-width: 920px) {
-    max-width: 861px;
-    min-width: 730px;
+  padding: 0 0 1.5vh 0;
+  @media screen and (min-device-width: 769px) {
+    max-width: 650px;
+  }
+  @media screen and (min-device-width: 541px) and (max-device-width: 768px) {
+    max-width: 768px;
   }
 `;
 
