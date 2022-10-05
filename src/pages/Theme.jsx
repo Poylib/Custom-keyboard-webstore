@@ -31,6 +31,7 @@ const Theme = () => {
       }
     })();
   }, []);
+
   if (loding) {
     return <Spinner />;
   }
