@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import zem from '../assets/items/zem.png'
+import download from '../assets/items/download.png'
+
 
 
 const Items  = ()=>{
@@ -15,11 +18,12 @@ const Items  = ()=>{
         .catch((err)=>{
             console.log(err)
         })
-    },[]);// 너무 많은 랜더가 되지 않도록 하기 위해서는 빈배열을 꼭 써주도록 !!! 
+    },[]);
 
     console.log(dataList)
     return (
         <>
+        <Wrapper>
             {
                 dataList.map(list => {
                     return (
@@ -27,20 +31,33 @@ const Items  = ()=>{
                     <div>
                         <img className='image'src={list.imageUrl}/>
                     </div>
-                            <div className='title'>{ list.name}</div>
+                    <div className='title'>{list.name}</div>
                     <div className='tag'>{list.hashtag}</div>
                     <div className='alignment'>
-                        <div className='download'>{list.downloads}</div>
-                        <div className='price'>10</div>
+                        <div>
+                            <img src={download}/>
+                            <span className='download'>{list.downloads}</span>
+                        </div>
+                        <div>
+                            <img src={zem} />
+                            <span className='price'>10</span>
+                        </div>
                     </div>
                 </ItemCategory>
                     )
                 })
             }
+            </Wrapper>
         </>
     )
 
 }
+const Wrapper = styled.div`
+display:flex;
+flex-wrap: wrap;
+` ;
+
+
 const ItemCategory = styled.div`
 width: 164px;
 padding-left: 14px;
