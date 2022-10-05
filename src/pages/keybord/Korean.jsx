@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const KoreanBlock = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
   .keybord-inner-box {
     display: flex;
     justify-content: center;
@@ -11,6 +14,16 @@ const KoreanBlock = styled.div`
     padding: 5px;
     border: 1px solid #000;
     background: #efeef3;
+    /* 키보드 인풋 */
+    .keybord-input-box{
+      width: 100%;
+      input[type="text"]{
+        width: 100%;
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid #aaa;
+      }
+    }
     /* 키보드 헤더 */
     .keybord-header-box{
         display: flex;
@@ -22,9 +35,11 @@ const KoreanBlock = styled.div`
             display: block;
             width: 20px;
             height: 20px;
+            cursor: pointer;
             img{
                 width: 100%;
                 height: 100%;
+                cursor: pointer;
             }
         }
     }
@@ -53,6 +68,7 @@ const KoreanBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 7px;
+        cursor: pointer;
         span {
           height: 30px;
         }
@@ -70,6 +86,7 @@ const KoreanBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 7px;
+        cursor: pointer;
       }
     }
     /* 키보드 세번째 라인(ㅁ~ㅣ) */
@@ -84,6 +101,7 @@ const KoreanBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+        cursor: pointer;
       }
     }
     /* 키보드 네번째 라인(쉬프트~백스페이스) */
@@ -98,6 +116,7 @@ const KoreanBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+        cursor: pointer;
         .shift {
           width: 50px;
         }
@@ -117,6 +136,7 @@ const KoreanBlock = styled.div`
         justify-content: center;
         align-items: center;
         margin: 0px 3px;
+        cursor: pointer;
         .num {
           width: 50px;
         }
@@ -135,6 +155,9 @@ const Korean = () => {
   return (
     <KoreanBlock>
       <div className='keybord-inner-box'>
+        <div className="keybord-input-box">
+          <input type="text" />
+        </div>
         <div className='keybord-header-box'>
           <span className='btn-1'>
             <img src='https://ifh.cc/g/Zz0Jht.webp' alt='' />

@@ -5,8 +5,7 @@ import Main from './pages/Main';
 import Theme from './pages/Theme';
 import Korean from './pages/keybord/Korean';
 import English from './pages/keybord/English';
-import DetailTop from './pages/detail/DetailTop';
-
+import Keybord from './pages/keybord/Keybord';
 function App() {
   return (
     <>
@@ -16,6 +15,8 @@ function App() {
         <Route path='/theme/:id' element={<Theme />} />
         <Route path='/korean' element={<Korean />} />
         <Route path='/english' element={<English />} />
+        <Route path='/test' element={<Keybord />} />
+
       </Routes>
     </>
   );

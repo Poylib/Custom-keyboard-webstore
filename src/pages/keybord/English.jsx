@@ -22,9 +22,11 @@ const EnglishBlock = styled.div`
             display: block;
             width: 20px;
             height: 20px;
+            cursor: pointer;
             img{
                 width: 100%;
                 height: 100%;
+                cursor: pointer;
             }
         }
     }
@@ -53,6 +55,7 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 7px;
+        cursor: pointer;
         span {
           height: 30px;
         }
@@ -70,6 +73,7 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 7px;
+        cursor: pointer;
       }
     }
     /* 키보드 세번째 라인(ㅁ~ㅣ) */
@@ -84,6 +88,7 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+        cursor: pointer;
       }
     }
     /* 키보드 네번째 라인(쉬프트~백스페이스) */
@@ -98,6 +103,7 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+        cursor: pointer;
         .shift {
           width: 50px;
         }
@@ -117,6 +123,7 @@ const EnglishBlock = styled.div`
         justify-content: center;
         align-items: center;
         margin: 0px 3px;
+        cursor: pointer;
         .num {
           width: 50px;
         }
