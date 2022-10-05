@@ -17,4 +17,17 @@ const StyledButton = styled.button`
   font-size: 14px;
   font-weight: 700;
   color: var(--pink);
+
+  @media screen and (min-width: 540px) and (max-width: 768px) {
+    width: 90%;
+    padding: 8px 0;
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 80%;
+    border-radius: 30px;
+    padding: 20px 0;
+    font-size: 20px;
+  }
 `;
