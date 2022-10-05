@@ -19,15 +19,16 @@ const StyledButton = styled.button`
   color: var(--pink);
 
   @media screen and (min-width: 540px) and (max-width: 768px) {
-    width: 90%;
-    padding: 8px 0;
+    width: 88%;
+    padding: 10px 0;
+    border-radius: 30px;
     font-size: 18px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 80%;
-    border-radius: 30px;
-    padding: 20px 0;
+    width: 86%;
+    border-radius: 40px;
+    padding: 12px 0;
     font-size: 20px;
   }
 `;

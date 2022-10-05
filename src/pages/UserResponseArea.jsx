@@ -42,6 +42,10 @@ const ResponseWrapper = styled.div`
   width: 100%;
   padding-bottom: 18px;
   border-bottom: 1px solid #f2f3f7;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 25px;
+  }
 `;
 
 const ResponeseBox = styled.div`

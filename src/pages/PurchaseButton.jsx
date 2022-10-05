@@ -25,6 +25,14 @@ const PurchaseButtonWrapper = styled.div`
   padding: 9px 0;
   margin-top: 24px;
   box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.15);
+
+  @media screen and (min-width: 540px) and (max-width: 768px) {
+    padding: 15px 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -35,6 +43,17 @@ const StyledButton = styled.button`
   border: 0;
   padding: 4px 0;
 
+  @media screen and (min-width: 540px) and (max-width: 768px) {
+    width: 92%;
+    padding: 6px 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 90%;
+    border-radius: 40px;
+    padding: 8px 0;
+  }
+
   p {
     display: flex;
     align-items: center;
@@ -44,8 +63,22 @@ const StyledButton = styled.button`
     font-weight: 700;
     line-height: 24px;
 
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 15px;
+      line-height: 26px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
     img {
       margin: 0 6px;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 10px;
+      }
     }
   }
 
@@ -53,5 +86,14 @@ const StyledButton = styled.button`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 13px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 `;
