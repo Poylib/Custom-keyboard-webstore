@@ -13,6 +13,7 @@ import DetailTop from './detail/DetailTop';
 const Theme = () => {
   const [loding, setLoding] = useState(false);
   const [dataList, setDataList] = useState([]);
+
   const params = useParams();
 
   useEffect(() => {
