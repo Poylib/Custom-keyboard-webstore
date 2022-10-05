@@ -69,6 +69,7 @@ align-items: center;
         margin: 0px 3px;
         margin-bottom: 7px;
         cursor: pointer;
+
         span {
           height: 30px;
         }
@@ -101,7 +102,9 @@ align-items: center;
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+
         cursor: pointer;
+
       }
     }
     /* 키보드 네번째 라인(쉬프트~백스페이스) */
@@ -116,7 +119,9 @@ align-items: center;
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+
         cursor: pointer;
+
         .shift {
           width: 50px;
         }
@@ -136,7 +141,9 @@ align-items: center;
         justify-content: center;
         align-items: center;
         margin: 0px 3px;
+
         cursor: pointer;
+
         .num {
           width: 50px;
         }
@@ -155,9 +162,11 @@ const Korean = () => {
   return (
     <KoreanBlock>
       <div className='keybord-inner-box'>
+
         <div className="keybord-input-box">
           <input type="text" />
         </div>
+
         <div className='keybord-header-box'>
           <span className='btn-1'>
             <img src='https://ifh.cc/g/Zz0Jht.webp' alt='' />

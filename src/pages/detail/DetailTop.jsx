@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 
@@ -44,6 +43,8 @@ const DetailTop = ({ props }) => {
   );
 };
 
+export default DetailTop;
+
 const DetailTopBlock = styled.div`
   width: 100%;
   padding: 0px 18px;
@@ -60,8 +61,8 @@ const DetailTopBlock = styled.div`
       display: flex;
       justify-content: flex-start;
       width: 100%;
-      margin-top: 10px;
-      margin-bottom: 5px;
+      padding-bottom: 10px;
+      margin: 10px 0px 5px 0px;
       .back-btn {
         cursor: pointer;
         svg {
@@ -253,4 +254,3 @@ const DetailTopBlock = styled.div`
     }
   }
 `;
-export default DetailTop;

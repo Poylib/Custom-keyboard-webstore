@@ -1,5 +1,7 @@
+
 import { useState } from 'react';
 import styled from 'styled-components';
+
 
 const UserResponseArea = () => {
   const figures = [
@@ -42,12 +44,16 @@ const ResponseWrapper = styled.div`
   width: 100%;
   padding-bottom: 18px;
   border-bottom: 1px solid #f2f3f7;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 25px;
+  }
 `;
 
 const ResponeseBox = styled.div`
-  text-align: center;
   color: ${props => (props.isSelected ? 'var(--pink)' : 'var(--font-gray)')};
-
+  text-align: center;
+  cursor: pointer;
   .icon,
   .comment,
   .count {
@@ -56,12 +62,31 @@ const ResponeseBox = styled.div`
 
   .icon {
     font-size: 24px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 40px;
+    }
   }
 
   .comment {
-    line-height: 18px;
-    font-size: 12px;
     margin-top: 5px;
+    font-size: 12px;
+    line-height: 18px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 17px;
+      line-height: 38px;
+    }
+
   }
 
   .count {

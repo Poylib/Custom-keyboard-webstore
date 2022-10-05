@@ -12,23 +12,23 @@ const EnglishBlock = styled.div`
     border: 1px solid #000;
     background: #efeef3;
     /* 키보드 헤더 */
-    .keybord-header-box{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        padding: 10px 0px;
-        span{
-            display: block;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            img{
-                width: 100%;
-                height: 100%;
-                cursor: pointer;
-            }
+    .keybord-header-box {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      padding: 10px 0px;
+      span {
+        display: block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
         }
+      }
     }
     /* 키버튼 공통 CSS */
     .key {
@@ -88,6 +88,7 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+
         cursor: pointer;
       }
     }
@@ -103,7 +104,9 @@ const EnglishBlock = styled.div`
         align-items: center;
         margin: 0px 3px;
         margin-bottom: 5px;
+
         cursor: pointer;
+
         .shift {
           width: 50px;
         }
@@ -123,7 +126,9 @@ const EnglishBlock = styled.div`
         justify-content: center;
         align-items: center;
         margin: 0px 3px;
+
         cursor: pointer;
+
         .num {
           width: 50px;
         }
@@ -141,7 +146,7 @@ const EnglishBlock = styled.div`
 const English = () => {
   return (
     <EnglishBlock>
-            <div className='keybord-inner-box'>
+      <div className='keybord-inner-box'>
         <div className='keybord-header-box'>
           <span className='btn-1'>
             <img src='https://ifh.cc/g/Zz0Jht.webp' alt='' />
