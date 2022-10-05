@@ -48,7 +48,7 @@ const Inner = styled.div`
 const TimeWrapper = styled.div`
   display: flex;
   justify-content: left;
-  padding-left: 1vw;
+  padding-left: 1vh;
   span {
     font-size: 1em;
     font-weight: 700;

@@ -18,7 +18,11 @@ const Title = () => {
 const Wrapper = styled.div`
   margin-top: 5vh;
   max-width: 500px;
-  min-width: 302px;
+  min-width: 266px;
+  @media screen and (min-device-width: 760px) and (max-device-width: 920px) {
+    max-width: 861px;
+    min-width: 730px;
+  }
 `;
 
 const Name = styled.span`

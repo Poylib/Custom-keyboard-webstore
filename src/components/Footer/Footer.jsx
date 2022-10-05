@@ -24,6 +24,9 @@ const Wrapper = styled.div`
   padding: 1vh 0 1vh 0;
   width: 100%;
   max-width: 500px;
+  @media screen and (min-device-width: 760px) and (max-device-width: 920px) {
+    max-width: 861px;
+  }
   border-top: 1px solid rgb(215, 217, 227);
 `;
 
