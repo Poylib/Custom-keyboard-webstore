@@ -56,16 +56,43 @@ const ResponeseBox = styled.div`
 
   .icon {
     font-size: 24px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 40px;
+    }
   }
 
   .comment {
     line-height: 18px;
     font-size: 12px;
     margin-top: 5px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 17px;
+      line-height: 38px;
+    }
   }
 
   .count {
     font-size: 10px;
     line-height: 14px;
+
+    @media screen and (min-width: 540px) and (max-width: 768px) {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 15px;
+    }
   }
 `;
