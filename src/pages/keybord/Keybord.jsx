@@ -5,6 +5,7 @@ const KeybordBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
   .keybord-inner-box {
     display: flex;
     justify-content: center;
@@ -57,7 +58,7 @@ const KeybordBlock = styled.div`
       font: 18px/1 'apple';
       border-radius: 7px;
     }
-    /* 키보드 첫번째 라인(1~0) */
+    /* 숫자 */
     .number {
       display: flex;
       justify-content: center;
@@ -75,7 +76,7 @@ const KeybordBlock = styled.div`
         }
       }
     }
-    /* 키보드 두번째 라인(ㅂ~ㅔ)) */
+    /* 텍스트 */
     .textkey {
       display: flex;
       justify-content: center;
@@ -89,55 +90,33 @@ const KeybordBlock = styled.div`
         margin: 0px 3px;
         margin-bottom: 7px;
         cursor: pointer;
-        &:nth-of-type(11){
-            margin-left: 10px;
-        }
-        &:nth-of-type(20){
-            width: 46px;
-        }
-        &:nth-of-type(28){
-            width: 46px;
+        &:nth-of-type(11) {
+          margin-left: 7px;
         }
       }
     }
-    /* 키보드 세번째 라인(ㅁ~ㅣ) */
-    .keyline-3 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
+    /* 쉬프트/백스페이스 */
+    .shiftkey {
+      position: relative;
       li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0px 3px;
-        margin-bottom: 5px;
-        cursor: pointer;
-      }
-    }
-    /* 키보드 네번째 라인(쉬프트~백스페이스) */
-    .keyline-4 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0px 3px;
-        margin-bottom: 5px;
         cursor: pointer;
         .shift {
+          position: absolute;
+          bottom: 7px;
+          right: 130px;
           width: 50px;
         }
         .back {
+          position: absolute;
+          bottom: 7px;
+          left: 130px;
+          width: 50px;
           width: 50px;
         }
       }
     }
-    /* 키보드 다섯번째 라인(특문~줄띄우기) */
-    .keyline-5 {
+    /* 기능키 */
+    .funkey {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -161,24 +140,50 @@ const KeybordBlock = styled.div`
     }
   }
 `;
+//  * 쉬프트/백스페이스/한영키/스페이스/닷/문단변경 버튼은 따로 map을 돌리면 안될것같음 onClick 이벤트가 따로 들어가야 되기 때문(?)
+//   1. 스테이트에 빈배열을 만들고
+//   2. 단어 onClick시 해당 단어를 스테이트 빈배열에 추가 (array.push)
+//   3. 인풋에 값을 넣을때는 Hangul.assemble(arr:string[]) 이용해서 배열에 값넣기
+//   4. 인풋에서 값을 삭제할때는 Hangul.disassemble(str:string, grouped:boolean = false) 을 이용해 배열뒤에서부터 제거 (array.pop 사용)
+//   5. 쉬프트 클릭시 한글은 쌍자음 영어는 대문자로 스테이트 값 변경 (트루/펄스로 한/영 비교 한뒤에 스테이트 변경)
+//   6. 한/영 키 누를시 (한/영 스테이트 변경)
 
 const Keybord = () => {
+  const [change, setChange] = useState(true);
+  const [uppercase, setUppercase] = useState(true);
   const [number, setNumber] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']);
-  const [text, setText] = useState(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', '⇧', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ', '⇦']);
-  //   노멀
-  //  ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']
+  const [text, setText] = useState(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
 
-  // 쉬프트
-  //  ['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']
-  const [english, setEnglish] = useState(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']);
-  //   노멀
-  //   ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p','a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
+  // ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'];
+  // ['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'];
+  // ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
+  //['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
-  // 쉬프트
-  //['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P','A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
+  const changeLanguage = () => {
+    if (change == true) {
+      setText(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']);
+    } else {
+      setText(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
+    }
+    return setChange(!change);
+  };
 
-
-  console.log(text);
+  const changeUppercase = () => {
+    if (change == true) {
+      if (uppercase == true) {
+        setText(['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'])
+      } else {
+        setText( ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
+      }
+    } else {
+      if (uppercase == false) {
+        setText(['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']);
+      } else {
+        setText(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']);
+      }
+    }
+    return setUppercase(!uppercase)
+  };
 
   return (
     <KeybordBlock>
@@ -228,6 +233,47 @@ const Keybord = () => {
                 </li>
               );
             })}
+        </ul>
+        {/* 기능키 */}
+        <ul className='shiftkey'>
+          <li id='shift'>
+            <span
+              className='key shift'
+              onClick={() => {
+                changeUppercase();
+              }}
+            >
+              &#8679;
+            </span>
+          </li>
+          <li id='back'>
+            <span className='key back'>&#8678;</span>
+          </li>
+        </ul>
+        <ul className='funkey'>
+          <li id='num'>
+            <span className='key num'>!@#</span>
+          </li>
+          <li id='null'>
+            <span
+              className='key null'
+              onClick={() => {
+                changeLanguage();
+              }}
+            ></span>
+          </li>
+          <li id='emoji'>
+            <span className='key emoji'>:-)</span>
+          </li>
+          <li id='space'>
+            <span className='key space'></span>
+          </li>
+          <li id='dot'>
+            <span className='key'>.</span>
+          </li>
+          <li id='space-line'>
+            <span className='key space-line'>&#9166;</span>
+          </li>
         </ul>
       </div>
     </KeybordBlock>
