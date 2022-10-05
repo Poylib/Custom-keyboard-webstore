@@ -1,7 +1,6 @@
-import TimeMobile from './TimeMobile';
-import TitleSearch from '../Nav/TitleSearch';
-
 import styled from 'styled-components';
+
+import TimeMobile from './TimeMobile';
 
 const Header = () => {
   return (

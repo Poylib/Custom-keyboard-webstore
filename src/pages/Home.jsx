@@ -1,17 +1,18 @@
-import Items from '../components/Items';
 import styled from 'styled-components';
 
-import Footer from '../components/Footer/Footer';
-import Nav from '../components/Nav/Nav';
 import { useState } from 'react';
 
+import Items from '../components/Items';
+import Footer from '../components/Footer/Footer';
+import Nav from '../components/Nav/Nav';
+
 const Home = () => {
-  const [type, setType] = useState('');
+  const [type, setType] = useState('NEW');
 
   return (
     <>
       <Container>
-        <Nav setType={setType} />
+        <Nav type={type} setType={setType} />
         <Items type={type} />
         <Footer />
       </Container>

@@ -1,6 +1,6 @@
-import ButtonOne from './ButtonOne';
-
 import styled from 'styled-components';
+
+import ButtonOne from './ButtonOne';
 
 const Footer = () => {
   return (

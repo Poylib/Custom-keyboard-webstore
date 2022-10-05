@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-
 import styled from 'styled-components';
+
+import { useEffect, useState } from 'react';
 
 const TimeMobile = () => {
   const [currentHour, setCurrentHour] = useState(new window.Date().getHours());

@@ -1,15 +1,15 @@
+import styled from 'styled-components';
+
 import CategoryList from './CategoryList';
 import TitleSearch from './TitleSearch';
 
-import styled from 'styled-components';
-
-const Title = ({ setType }) => {
+const Title = ({ type, setType }) => {
   return (
     <>
       <Wrapper>
         <TitleSearch />
         <Name>취향대로 골라보기</Name>
-        <CategoryList setType={setType} />
+        <CategoryList type={type} setType={setType} />
       </Wrapper>
     </>
   );
