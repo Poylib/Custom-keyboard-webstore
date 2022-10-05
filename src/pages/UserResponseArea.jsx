@@ -51,6 +51,7 @@ const ResponseWrapper = styled.div`
 const ResponeseBox = styled.div`
   text-align: center;
   color: ${props => (props.isSelected ? 'var(--pink)' : 'var(--font-gray)')};
+  cursor: pointer;
 
   .icon,
   .comment,
@@ -71,9 +72,9 @@ const ResponeseBox = styled.div`
   }
 
   .comment {
+    margin-top: 5px;
     line-height: 18px;
     font-size: 12px;
-    margin-top: 5px;
 
     @media screen and (min-width: 540px) and (max-width: 768px) {
       font-size: 15px;

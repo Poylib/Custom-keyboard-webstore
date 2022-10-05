@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 
@@ -43,6 +42,7 @@ const DetailTop = ({ props }) => {
     </DetailTopBlock>
   );
 };
+export default DetailTop;
 
 const DetailTopBlock = styled.div`
   width: 100%;
@@ -253,4 +253,3 @@ const DetailTopBlock = styled.div`
     }
   }
 `;
-export default DetailTop;

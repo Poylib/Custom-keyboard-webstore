@@ -24,7 +24,7 @@ const PurchaseButtonWrapper = styled.div`
 
   padding: 9px 0;
   margin-top: 24px;
-  box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -6px 9px -7px rgba(0, 0, 0, 0.15);
 
   @media screen and (min-width: 540px) and (max-width: 768px) {
     padding: 15px 0;
@@ -36,12 +36,13 @@ const PurchaseButtonWrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  color: #fff;
   width: 94%;
-  background: var(--pink);
-  border-radius: 30px;
-  border: 0;
   padding: 4px 0;
+  color: #fff;
+  background: var(--pink);
+  border: 0;
+  border-radius: 30px;
+  cursor: pointer;
 
   @media screen and (min-width: 540px) and (max-width: 768px) {
     width: 92%;
@@ -50,15 +51,14 @@ const StyledButton = styled.button`
 
   @media screen and (min-width: 768px) {
     width: 90%;
-    border-radius: 40px;
     padding: 8px 0;
+    border-radius: 40px;
   }
 
   p {
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 14px;
     font-weight: 700;
     line-height: 24px;

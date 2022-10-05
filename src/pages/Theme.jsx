@@ -32,7 +32,6 @@ const Theme = () => {
       }
     })();
   }, []);
-  console.log('render count');
 
   if (loding) {
     return <Spinner />;
@@ -64,7 +63,7 @@ const StyledTheme = styled.div`
   --pink: rgba(255, 65, 125, 1);
   --font-gray: rgba(145, 146, 153, 1);
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
