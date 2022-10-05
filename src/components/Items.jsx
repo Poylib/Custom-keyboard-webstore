@@ -38,7 +38,7 @@ const Items = ({ type }) => {
                 {list.hashtag.map(tag => {
                   return (
                     <div key={tag} className='tag'>
-                      #{tag}
+                      #{tag}&nbsp;
                     </div>
                   );
                 })}
@@ -50,7 +50,7 @@ const Items = ({ type }) => {
                 </div>
                 <div>
                   <img src={zem} />
-                  <span className='price'>10</span>
+                  <span className='price'>{list.price}</span>
                 </div>
               </div>
             </ItemCategory>
@@ -66,11 +66,12 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 37px;
+  margin-bottom: 20px;
 `;
 
 const ItemCategory = styled.div`
   width: 49%;
-  padding: 0 14px 0 14px;
+  padding: 0 14px 14px 14px;
 
   .image {
     width: 100%;
@@ -78,12 +79,12 @@ const ItemCategory = styled.div`
     border-radius: 5px;
   }
   .title {
+    display: block;
+    color: #42444c;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: #42444c;
-    display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -93,15 +94,16 @@ const ItemCategory = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
     .tag {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: #aaabb3;
-    opacity: 1;
-    display: block;
-  }
+      display: block;
+      color: #aaabb3;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+      opacity: 1;
+     }
   }
  
   .alignment {
@@ -109,18 +111,20 @@ const ItemCategory = styled.div`
     justify-content: space-between;
 
     .download {
+      margin-left: 5px;
+      color: #aaabb3;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
       line-height: 18px;
-      color: #aaabb3;
     }
     .price {
+      margin-left: 5px;
+      color: #7dc9fc;
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
-      line-height: 18px;
-      color: #7dc9fc;
+      
     }
   }
 `;
