@@ -9,12 +9,12 @@ export default InquiryButton;
 const StyledButton = styled.button`
   width: 90%;
   padding: 8px 0;
-  border: 3px solid #ff417d;
+  border: 3px solid var(--pink);
   background-color: #fff;
   border-radius: 20px;
   margin-top: 24px;
 
   font-size: 14px;
   font-weight: 700;
-  color: #ff417d;
+  color: var(--pink);
 `;

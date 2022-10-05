@@ -18,12 +18,7 @@ const GlobalStyle = createGlobalStyle`
     background: white;
     color : black;
     font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  button {
-    padding: 0;
-  }
-  
+  }  
 `;
 
 export default GlobalStyle;

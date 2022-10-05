@@ -30,7 +30,7 @@ const PurchaseButtonWrapper = styled.div`
 const StyledButton = styled.button`
   color: #fff;
   width: 94%;
-  background: #ff417d;
+  background: var(--pink);
   border-radius: 30px;
   border: 0;
   padding: 4px 0;
