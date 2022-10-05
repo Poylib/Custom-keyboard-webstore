@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-
 import Spinner from '../components/Spinner';
 import Contents from '../components/themeComponents/Contents';
 import UserResponseArea from './UserResponseArea';
 import InquiryButton from './InquiryButton';
 import PurchaseButton from './PurchaseButton';
+import DetailTop from './detail/DetailTop';
 
 const Theme = () => {
   const [imgList, setImgList] = useState([]);
@@ -43,6 +43,7 @@ const Theme = () => {
   return (
     <>
       <StyledTheme>
+        <DetailTop />
         <Contents imgList={imgList} isLiveTheme={isLiveTheme} />
         <UserResponseArea />
         <InquiryButton />

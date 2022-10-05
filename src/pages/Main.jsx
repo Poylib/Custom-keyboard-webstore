@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+const MainBlock = styled.div``;
+
 const Main = () => {
   return (
-    <>
-      <span></span>
-    </>
+    <MainBlock>
+      1
+    </MainBlock>
   );
 };
+
 export default Main;
