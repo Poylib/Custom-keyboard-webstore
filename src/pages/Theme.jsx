@@ -1,19 +1,48 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
+
+import Spinner from '../components/Spinner';
+import Contents from '../components/themeComponents/Contents';
 import UserResponseArea from './UserResponseArea';
 import InquiryButton from './InquiryButton';
 import PurchaseButton from './PurchaseButton';
 
 const Theme = () => {
+  const [imgList, setImgList] = useState([]);
+  const [isLiveTheme, setIsLiveTheme] = useState(false);
+  const [loding, setLoding] = useState(false);
+  const params = useParams();
   const [price, setPrice] = useState(0);
-  axios.get('https://api.plkey.app/theme/6').then(res => {
-    setPrice(res.data.data.price);
-  });
+
+  useEffect(() => {
+    (async () => {
+      setLoding(true);
+      try {
+        const {
+          data: { data },
+        } = await axios.get(`https://api.plkey.app/theme/${params.id}`);
+        setImgList(data.figure);
+        // setPrice(data.price); price 맛나 ? 몰루
+        setIsLiveTheme(data.isLiveTheme);
+        setLoding(false);
+      } catch (error) {
+        console.log(error);
+        alert('통신 실패하였습니다.');
+        setLoding(true);
+      }
+    })();
+  }, []);
+
+  if (loding) {
+    return <Spinner />;
+  }
 
   return (
     <>
       <StyledTheme>
+        <Contents imgList={imgList} isLiveTheme={isLiveTheme} />
         <UserResponseArea />
         <InquiryButton />
         <PurchaseButton price={price} />
@@ -21,6 +50,7 @@ const Theme = () => {
     </>
   );
 };
+
 export default Theme;
 
 const StyledTheme = styled.div`

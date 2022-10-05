@@ -1,8 +1,4 @@
 const Home = () => {
-  return (
-    <>
-      <span>fdsafs</span>
-    </>
-  );
+  return <></>;
 };
 export default Home;
