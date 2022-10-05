@@ -23,7 +23,6 @@ const DetailTop = () => {
   const [itemName, setItemName] = useState('');
   const [creator, setCreator] = useState('');
   const params = useParams();
-  console.log(params.id);
   useEffect(() => {
     axios
       .get(`https://api.plkey.app/theme/${params.id}`)

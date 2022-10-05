@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const Contents = ({ imgList, isLiveTheme }) => {
   return (
     <StyledContents>
-      <div className='ad-rectangle'>광고잘이</div>
+      <div className='ad-rectangle'>AD</div>
       {isLiveTheme && (
         <>
           <ImgBox>
@@ -26,21 +26,26 @@ export default Contents;
 
 const StyledContents = styled.div`
   width: 100%;
-  font-size: 14px;
+  font-size: 90%;
   .ad-rectangle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 24px 18px 40px 18px;
-    height: 50px;
+    height: 7.5vh;
     background-color: #d9d9d9;
   }
-
   .guide-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 45px;
-    /* font-size: 1rem; */
     line-height: 24px;
     text-align: center;
+    @media screen and (min-width: 540px) {
+      font-size: 1.1rem;
+      line-height: 25px;
+    }
     span {
       margin: 0 42px;
       color: #919299;
