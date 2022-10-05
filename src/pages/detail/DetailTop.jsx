@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 
@@ -44,14 +45,16 @@ const DetailTop = ({ props }) => {
 };
 
 const DetailTopBlock = styled.div`
+  width: 100%;
+  padding: 0px 18px;
   .detail-inner-box {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 375px;
-    height: 100%;
 
+    width: 100%;
+    height: 100%;
     /* 뒤로가기버튼 */
     .detail-header-box {
       display: flex;
@@ -60,9 +63,10 @@ const DetailTopBlock = styled.div`
       margin-top: 10px;
       margin-bottom: 5px;
       .back-btn {
+        cursor: pointer;
         svg {
-          width: 24px;
-          height: 24px;
+          width: 35px;
+          height: 35px;
           color: #2e2f33;
         }
       }
@@ -70,10 +74,11 @@ const DetailTopBlock = styled.div`
     /* 상품이미지 */
     .detail-item-img-box {
       width: 100%;
-      height: 264px;
+      height: 100%;
       background: #ddd;
       margin-bottom: 30px;
       border-radius: 10px;
+      cursor: pointer;
       img {
         width: 100%;
         height: 100%;
@@ -88,39 +93,161 @@ const DetailTopBlock = styled.div`
       .item-title {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 10px;
-        font: bold 20px/1 'Noto Sans KR';
+        margin-bottom: 20px;
+        font: bold 35px/1 'Noto Sans KR';
         color: #42444c;
         .download-btn {
+          cursor: pointer;
           svg {
-            width: 20px;
-            height: 20px;
+            width: 35px;
+            height: 35px;
             color: #919299;
           }
         }
       }
       .item-creator {
         display: flex;
-        margin-bottom: 15px;
-        font: bold 15px/1 'Noto Sans KR';
+        margin-bottom: 25px;
+        font: 25px/1 'Noto Sans KR';
         color: #919299;
+        cursor: pointer;
       }
       .item-tag {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 15px;
-        font: bold 15px/1 'Noto Sans KR';
+        font: 20px/1 'Noto Sans KR';
         color: #42444c;
+        cursor: pointer;
         li {
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 28px;
+          height: 35px;
           margin-right: 5px;
           margin-bottom: 10px;
           padding: 0px 10px;
           border-radius: 20px;
           background: #ebedf5;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .detail-inner-box {
+      /* 뒤로가기버튼 */
+      .detail-header-box {
+        .back-btn {
+          svg {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+      /* 상품텍스트 */
+      .detail-item-text-box {
+        .item-title {
+          margin-bottom: 20px;
+          font: bold 35px/1 'Noto Sans KR';
+          .download-btn {
+            svg {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        }
+        .item-creator {
+          margin-bottom: 25px;
+          font: 25px/1 'Noto Sans KR';
+        }
+        .item-tag {
+          margin-bottom: 15px;
+          font: 20px/1 'Noto Sans KR';
+          li {
+            height: 35px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .detail-inner-box {
+      /* 뒤로가기버튼 */
+      .detail-header-box {
+        .back-btn {
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+      /* 상품텍스트 */
+      .detail-item-text-box {
+        .item-title {
+          margin-bottom: 15px;
+          font: bold 27px/1 'Noto Sans KR';
+          .download-btn {
+            svg {
+              width: 25px;
+              height: 25px;
+            }
+          }
+        }
+        .item-creator {
+          margin-bottom: 25px;
+          font: 18px/1 'Noto Sans KR';
+        }
+        .item-tag {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 15px;
+          font: 15px/1 'Noto Sans KR';
+          color: #42444c;
+          cursor: pointer;
+          li {
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .detail-inner-box {
+      /* 뒤로가기버튼 */
+      .detail-header-box {
+        .back-btn {
+          cursor: pointer;
+          svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      /* 상품이미지 */
+      .detail-item-img-box {
+      }
+      /* 상품텍스트 */
+      .detail-item-text-box {
+        .item-title {
+          margin-bottom: 10px;
+          font: bold 20px/1 'Noto Sans KR';
+          .download-btn {
+            svg {
+              width: 20px;
+              height: 20px;
+              color: #919299;
+            }
+          }
+        }
+        .item-creator {
+          margin-bottom: 15px;
+          font: 15px/1 'Noto Sans KR';
+          color: #919299;
+        }
+        .item-tag {
+          margin-bottom: 15px;
+          font: 15px/1 'Noto Sans KR';
         }
       }
     }

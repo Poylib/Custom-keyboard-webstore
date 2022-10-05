@@ -57,8 +57,14 @@ export default Theme;
 const StyledTheme = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-
+  width: 768px;
+  margin: 0 auto;
   --pink: rgba(255, 65, 125, 1);
   --font-gray: rgba(145, 146, 153, 1);
+
+  @media screen and (max-width: 768px){
+    width: 100%;
+  }
 `;
