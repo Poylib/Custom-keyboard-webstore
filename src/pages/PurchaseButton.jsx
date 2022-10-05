@@ -17,14 +17,13 @@ const PurchaseButton = ({ price }) => {
 export default PurchaseButton;
 
 const PurchaseButtonWrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 100%;
   padding: 9px 0;
   margin-top: 24px;
-  box-shadow: 0px -6px 9px -7px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px -6px 9px -7px #00000026;
 
   @media screen and (min-width: 540px) and (max-width: 768px) {
     padding: 15px 0;
