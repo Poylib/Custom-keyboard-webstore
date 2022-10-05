@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import Header from './components/Header/Header';
 import GlobalStyle from './GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
 import Theme from './pages/Theme';
+import Home from './pages/Home';
 import Korean from './pages/keybord/Korean';
 import English from './pages/keybord/English';
 
