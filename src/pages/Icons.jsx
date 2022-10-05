@@ -1,19 +1,32 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 const Icons = () => {
-  const companyCardRef = useRef([]);
+  const figures = [
+    { icon: '😊', text: '맘에들어요' },
+    { icon: '😍', text: '심쿵했어요' },
+    { icon: '😉', text: '응원해요' },
+    { icon: '🤣', text: '갖고싶어요' },
+  ];
 
-  const figures = ['😊', '😍', '😉', '🤣'];
+  const [userReactionCount, setUserReactionCount] = useState([0, 0, 0, 0]);
+
+  const changeCount = e => {
+    let copy = [...userReactionCount];
+
+    copy[e.target.id] === 0 ? (copy[e.target.id] += 1) : (copy[e.target.id] -= 1);
+
+    setUserReactionCount(copy);
+  };
 
   return (
     <IconContainer>
       {figures.map((figure, index) => {
         return (
-          <IconBox key={index}>
-            <Icon>{figure}</Icon>
-            <Text>맘에들어요</Text>
-            <Num>0</Num>
+          <IconBox key={index} id={index} onClick={changeCount} isSelected={userReactionCount[index]}>
+            <p className='icon'>{figure.icon}</p>
+            <p className='comment'>{figure.text}</p>
+            <p className='count'>{0 + userReactionCount[index]}</p>
           </IconBox>
         );
       })}
@@ -28,27 +41,31 @@ const IconContainer = styled.div`
   justify-content: space-around;
   width: 100%;
   margin-top: 20px;
+  padding-bottom: 18px;
   border-bottom: 1px solid #f2f3f7;
 `;
 
 const IconBox = styled.div`
-  p {
-    text-align: center;
+  text-align: center;
+  color: ${props => (props.isSelected ? 'var(--pink)' : 'var(--font-gray)')};
+
+  .icon,
+  .comment,
+  .count {
+    pointer-events: none;
   }
-`;
 
-const Icon = styled.p`
-  font-size: 24px;
-`;
+  .icon {
+    font-size: 24px;
+  }
 
-const Text = styled.p`
-  line-height: 18px;
-  font-size: 12px;
-  color: black;
-`;
+  .comment {
+    line-height: 18px;
+    font-size: 12px;
+  }
 
-const Num = styled.p`
-  font-size: 10px;
-  line-height: 14px;
-  margin-bottom: 18px;
+  .count {
+    font-size: 10px;
+    line-height: 14px;
+  }
 `;
