@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const Icons = () => {
+const UserResponseArea = () => {
   const figures = [
     { icon: '😊', text: '맘에들어요' },
     { icon: '😍', text: '심쿵했어요' },
@@ -9,34 +9,34 @@ const Icons = () => {
     { icon: '🤣', text: '갖고싶어요' },
   ];
 
-  const [userReactionCount, setUserReactionCount] = useState([0, 0, 0, 0]);
+  const [userResponseCount, setUserResponseCount] = useState([0, 0, 0, 0]);
 
   const changeCount = e => {
-    let copy = [...userReactionCount];
+    let copy = [...userResponseCount];
 
     copy[e.target.id] === 0 ? (copy[e.target.id] += 1) : (copy[e.target.id] -= 1);
 
-    setUserReactionCount(copy);
+    setUserResponseCount(copy);
   };
 
   return (
-    <IconContainer>
+    <ResponseWrapper>
       {figures.map((figure, index) => {
         return (
-          <IconBox key={index} id={index} onClick={changeCount} isSelected={userReactionCount[index]}>
+          <ResponeseBox key={index} id={index} onClick={changeCount} isSelected={userResponseCount[index]}>
             <p className='icon'>{figure.icon}</p>
             <p className='comment'>{figure.text}</p>
-            <p className='count'>{0 + userReactionCount[index]}</p>
-          </IconBox>
+            <p className='count'>{0 + userResponseCount[index]}</p>
+          </ResponeseBox>
         );
       })}
-    </IconContainer>
+    </ResponseWrapper>
   );
 };
 
-export default Icons;
+export default UserResponseArea;
 
-const IconContainer = styled.div`
+const ResponseWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -45,7 +45,7 @@ const IconContainer = styled.div`
   border-bottom: 1px solid #f2f3f7;
 `;
 
-const IconBox = styled.div`
+const ResponeseBox = styled.div`
   text-align: center;
   color: ${props => (props.isSelected ? 'var(--pink)' : 'var(--font-gray)')};
 
@@ -62,6 +62,7 @@ const IconBox = styled.div`
   .comment {
     line-height: 18px;
     font-size: 12px;
+    margin-top: 5px;
   }
 
   .count {

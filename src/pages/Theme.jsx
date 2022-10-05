@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Icons from './Icons';
+import UserResponseArea from './UserResponseArea';
 import InquiryButton from './InquiryButton';
 import PurchaseButton from './PurchaseButton';
 
@@ -14,7 +14,7 @@ const Theme = () => {
   return (
     <>
       <StyledTheme>
-        <Icons />
+        <UserResponseArea />
         <InquiryButton />
         <PurchaseButton price={price} />
       </StyledTheme>
