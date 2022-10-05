@@ -60,6 +60,7 @@ const StyledTheme = styled.div`
   align-items: center;
   width: 768px;
   margin: 0 auto;
+  padding-top: 30px;
   --pink: rgba(255, 65, 125, 1);
   --font-gray: rgba(145, 146, 153, 1);
 

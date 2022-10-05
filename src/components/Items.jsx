@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import zem from '../assets/items/zem.png';
 import download from '../assets/items/download.png';
+import Spinner from './Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);
-
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     let url = '';
     if (type === 'NEW') {
@@ -14,34 +17,45 @@ const Items = ({ type }) => {
     } else {
       url = `https://api.plkey.app/theme?category=${type}`;
     }
+    setLoading(true);
     axios
       .get(url)
       .then(res => {
         setDataList(res.data.data);
+        setLoading(false);
       })
       .catch(err => {
         console.log(err);
       });
   }, [type]);
 
+  const goDetail = themeId => {
+    navigate(`/theme/${themeId}`);
+  };
+
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <>
       <Wrapper>
         {dataList.map(list => {
           return (
             <ItemCategory key={list._id}>
-              <div>
-                <img className='image' src={list.imageUrl} />
-              </div>
-              <div className='title'>{list.name}</div>
-              <div className='tag-container'>
-                {list.hashtag.map(tag => {
-                  return (
-                    <div key={tag} className='tag'>
-                      #{tag}&nbsp;
-                    </div>
-                  );
-                })}
+              <div onClick={() => goDetail(list.themeId)}>
+                <div>
+                  <img className='image' src={list.imageUrl} />
+                </div>
+                <div className='title'>{list.name}</div>
+                <div className='tag-container'>
+                  {list.hashtag.map(tag => {
+                    return (
+                      <div key={tag} className='tag'>
+                        #{tag}&nbsp;
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div className='alignment'>
                 <div>
@@ -71,8 +85,10 @@ const Wrapper = styled.div`
 
 const ItemCategory = styled.div`
   width: 49%;
-  padding: 0 14px 14px 14px;
-
+  padding: 0 12px 12px 14px;
+  div {
+    cursor: pointer;
+  }
   .image {
     width: 100%;
     height: auto;
@@ -103,9 +119,9 @@ const ItemCategory = styled.div`
       font-size: 12px;
       line-height: 18px;
       opacity: 1;
-     }
+    }
   }
- 
+
   .alignment {
     display: flex;
     justify-content: space-between;
@@ -124,7 +140,6 @@ const ItemCategory = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
-      
     }
   }
 `;
