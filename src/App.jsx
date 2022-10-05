@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+
+import Main from './pages/Main';
 import Theme from './pages/Theme';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Main />} />
         <Route path='/theme/:id' element={<Theme />} />
       </Routes>
     </>
