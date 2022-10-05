@@ -2,23 +2,24 @@ import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import DetailTop from './pages/detail/DetailTop';
 import Main from './pages/Main';
 import Theme from './pages/Theme';
-import DetailTop from './pages/detail/DetailTop';
+import Korean from './pages/keybord/Korean';
+import English from './pages/keybord/English';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <GlobalStyle />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/theme/:id' element={<Theme />} />
-        <Route path='/test' element={<DetailTop />} />
+        <Route path='/korean' element={<Korean />} />
+        <Route path='/english' element={<English />} />
       </Routes>
     </>
   );
 }
 
-export default App
+export default App;
