@@ -36,7 +36,7 @@ const Theme = () => {
     })();
   }, []);
 
-  if (!loding) {
+  if (loding) {
     return <Spinner />;
   }
 
