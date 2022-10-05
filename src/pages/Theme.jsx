@@ -11,11 +11,8 @@ import PurchaseButton from './PurchaseButton';
 import DetailTop from './detail/DetailTop';
 
 const Theme = () => {
-  const [imgList, setImgList] = useState([]);
-  const [isLiveTheme, setIsLiveTheme] = useState(false);
   const [loding, setLoding] = useState(false);
-  const [price, setPrice] = useState(0);
-
+  const [dataList, setDataList] = useState([]);
   const params = useParams();
 
   useEffect(() => {
@@ -25,10 +22,8 @@ const Theme = () => {
         const {
           data: { data },
         } = await axios.get(`https://api.plkey.app/theme/${params.id}`);
-        setImgList(data.figure);
-        setPrice(data.price);
-        setIsLiveTheme(data.isLiveTheme);
         setLoding(false);
+        setDataList(data);
       } catch (error) {
         console.log(error);
         alert('통신 실패하였습니다.');
@@ -36,22 +31,22 @@ const Theme = () => {
       }
     })();
   }, []);
-
   console.log('render count');
 
   if (loding) {
     return <Spinner />;
   }
-
   return (
     <>
-      <StyledTheme>
-        <DetailTop />
-        <Contents imgList={imgList} isLiveTheme={isLiveTheme} />
-        <UserResponseArea />
-        <InquiryButton />
-        <PurchaseButton price={price} />
-      </StyledTheme>
+      {dataList && (
+        <StyledTheme>
+          <DetailTop props={dataList} />
+          <Contents figure={dataList.figure} isLiveTheme={dataList.isLiveTheme} />
+          <UserResponseArea />
+          <InquiryButton />
+          <PurchaseButton price={dataList.price} />
+        </StyledTheme>
+      )}
     </>
   );
 };

@@ -1,42 +1,10 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 
-//      웹 테마 정보 페이지를 통해 테마의 상세 정보를 보여줍니다.
-//     - Figma에 주어진 디자인과 명세대로 구현합니다.
-//     - 여러 디바이스에서 레이아웃이 깨지지 않도록 반응형 레이아웃으로 구현해야 합니다.
-//     - 동적 라우팅을 통해 첫 번째 화면에서 전달받은 params(themeId)를 활용하여 테마 상세 정보를 불러옵니다.
-//     - 상단의 뒤로가기 버튼을 눌렀을 때 **첫 번째 화면**으로 이동해야 합니다.
-
-//      - 평가 요소
-//     - UI 및 레이아웃 구현이 되었으며, 정상 작동하는지 평가합니다.
-//     - API 통신을 통해 데이터를 정상적으로 처리하는지 평가합니다.
-//     - 반응형 레이아웃이 정상적으로 작동하는지 평가합니다.
-//     - 라우터 구현 및 동적 라우팅이 정상적으로 작동하는지 평가합니다.
-
-const DetailTop = () => {
-  const [hashtag, setHashtag] = useState('');
-  const [detailImg, setDetailImg] = useState('');
-  const [itemName, setItemName] = useState('');
-  const [creator, setCreator] = useState('');
-  const params = useParams();
-  useEffect(() => {
-    axios
-      .get(`https://api.plkey.app/theme/${params.id}`)
-      .then(function (res) {
-        const data = res.data.data;
-        setHashtag(data.hashtag);
-        setDetailImg(data.imageUrl);
-        setItemName(data.name);
-        setCreator(data.creator);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+const DetailTop = ({ props }) => {
+  const { hashtag, imageUrl, name, creator } = props;
 
   return (
     <DetailTopBlock>
@@ -49,12 +17,12 @@ const DetailTop = () => {
         </div>
         {/* 상품이미지 */}
         <div className='detail-item-img-box'>
-          <img src={detailImg} alt='' />
+          <img src={imageUrl} alt='' />
         </div>
         {/* 상품텍스트 */}
         <div className='detail-item-text-box'>
           <div className='item-title'>
-            <span>{itemName}</span>
+            <span>{name}</span>
             <span className='download-btn'>
               <FiUpload />
             </span>

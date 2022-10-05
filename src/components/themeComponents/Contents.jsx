@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 
-const Contents = ({ imgList, isLiveTheme }) => {
+const Contents = ({ figure, isLiveTheme }) => {
   return (
     <StyledContents>
       <div className='ad-rectangle'>AD</div>
       {isLiveTheme && (
         <>
           <ImgBox>
-            {imgList.map((el, i) => (
+            {figure.map((el, i) => (
               <ImgList key={i} url={el.imageUrl} />
             ))}
           </ImgBox>
@@ -66,4 +65,7 @@ const ImgBox = styled.div`
 const ImgList = styled.img`
   width: 33%;
   content: url(${props => props.url});
+  @media screen and (min-width: 768px) {
+    width: 24%;
+  }
 `;
