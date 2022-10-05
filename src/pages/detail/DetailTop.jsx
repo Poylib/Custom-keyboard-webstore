@@ -60,8 +60,7 @@ const DetailTopBlock = styled.div`
       display: flex;
       justify-content: flex-start;
       width: 100%;
-      margin-top: 10px;
-      margin-bottom: 5px;
+      margin: 10px 0px 5px 0px;
       .back-btn {
         cursor: pointer;
         svg {
