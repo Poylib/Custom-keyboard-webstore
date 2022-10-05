@@ -26,8 +26,7 @@ export default Contents;
 
 const StyledContents = styled.div`
   width: 100%;
-  /* font-size: 14px; */
-  font-size: 16px;
+  font-size: 14px;
   .ad-rectangle {
     margin: 24px 18px 40px 18px;
     height: 50px;
