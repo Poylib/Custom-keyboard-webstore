@@ -8,6 +8,7 @@ import download from '../assets/items/download.png'
 
 const Items  = ()=>{
     const[dataList, setDataList] = useState([]);
+    // const param = useParams();
 
     useEffect( ()=>{
         axios
@@ -32,7 +33,11 @@ const Items  = ()=>{
                         <img className='image'src={list.imageUrl}/>
                     </div>
                     <div className='title'>{list.name}</div>
-                    <div className='tag'>{list.hashtag}</div>
+                    <div className='flex'>
+                    {list.hashtag.map((tag)=>{return(<div className='tag'>#{tag}</div>
+
+                    )}) }
+                    </div>
                     <div className='alignment'>
                         <div>
                             <img src={download}/>
@@ -55,6 +60,7 @@ const Items  = ()=>{
 const Wrapper = styled.div`
 display:flex;
 flex-wrap: wrap;
+align-items: center;
 ` ;
 
 
@@ -72,6 +78,16 @@ padding-left: 14px;
     font-size: 14px;
     line-height: 20px;
     color: #42444C;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.flex{
+    display: flex;    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .tag{
     font-style: normal;
@@ -80,6 +96,8 @@ padding-left: 14px;
     line-height: 18px;
     color: #AAABB3;
     opacity: 1;
+    display: block;
+
 }
 .alignment{
     display: flex;
