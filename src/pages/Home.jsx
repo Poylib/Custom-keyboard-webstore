@@ -1,11 +1,14 @@
+import Items from '../components/Items'
 import styled from 'styled-components';
 
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 
+
 const Home = () => {
   return (
     <>
+      <Items/>
       <Container>
         <Nav />
         <Footer />
