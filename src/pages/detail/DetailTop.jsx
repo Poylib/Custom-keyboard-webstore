@@ -52,7 +52,6 @@ const DetailTopBlock = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     width: 100%;
     height: 100%;
     /* 뒤로가기버튼 */
@@ -60,6 +59,7 @@ const DetailTopBlock = styled.div`
       display: flex;
       justify-content: flex-start;
       width: 100%;
+      padding-bottom: 10px;
       margin: 10px 0px 5px 0px;
       .back-btn {
         cursor: pointer;
