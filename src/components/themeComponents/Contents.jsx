@@ -1,36 +1,7 @@
-import axios from 'axios';
 import styled from 'styled-components';
-import Spinner from '../Spinner';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-const Contents = () => {
-  const [imgList, setImgList] = useState([]);
-  const [isLiveTheme, setIsLiveTheme] = useState(false);
-  const [loding, setLoding] = useState(false);
-  const params = useParams();
-  useEffect(() => {
-    (async () => {
-      setLoding(true);
-      try {
-        const {
-          data: { data },
-        } = await axios.get(`https://api.plkey.app/theme/${params.id}`);
-        setImgList(data.figure);
-        setIsLiveTheme(data.isLiveTheme);
-        setLoding(false);
-      } catch (error) {
-        console.log(error);
-        alert('통신 실패하였습니다.');
-        setLoding(true);
-      }
-    })();
-  }, []);
-
-  if (loding) {
-    return <Spinner />;
-  }
-
+const Contents = ({ imgList, isLiveTheme }) => {
   return (
     <StyledContents>
       <div className='ad-rectangle'>광고잘이</div>
