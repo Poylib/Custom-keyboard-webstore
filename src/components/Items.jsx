@@ -34,7 +34,7 @@ const Items = ({ type }) => {
                 <img className='image' src={list.imageUrl} />
               </div>
               <div className='title'>{list.name}</div>
-              <div className='flex'>
+              <div className='tag-container'>
                 {list.hashtag.map(tag => {
                   return (
                     <div key={tag} className='tag'>
@@ -88,13 +88,12 @@ const ItemCategory = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .flex {
+  .tag-container {
     display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  .tag {
+    .tag {
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -103,6 +102,8 @@ const ItemCategory = styled.div`
     opacity: 1;
     display: block;
   }
+  }
+ 
   .alignment {
     display: flex;
     justify-content: space-between;
