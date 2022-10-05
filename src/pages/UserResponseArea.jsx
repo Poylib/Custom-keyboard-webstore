@@ -40,7 +40,6 @@ const ResponseWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 20px;
   padding-bottom: 18px;
   border-bottom: 1px solid #f2f3f7;
 `;

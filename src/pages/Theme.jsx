@@ -13,8 +13,9 @@ const Theme = () => {
   const [imgList, setImgList] = useState([]);
   const [isLiveTheme, setIsLiveTheme] = useState(false);
   const [loding, setLoding] = useState(false);
-  const params = useParams();
   const [price, setPrice] = useState(0);
+
+  const params = useParams();
 
   useEffect(() => {
     (async () => {
@@ -24,7 +25,7 @@ const Theme = () => {
           data: { data },
         } = await axios.get(`https://api.plkey.app/theme/${params.id}`);
         setImgList(data.figure);
-        // setPrice(data.price); price 맛나 ? 몰루
+        setPrice(data.price);
         setIsLiveTheme(data.isLiveTheme);
         setLoding(false);
       } catch (error) {
@@ -35,7 +36,7 @@ const Theme = () => {
     })();
   }, []);
 
-  if (loding) {
+  if (!loding) {
     return <Spinner />;
   }
 
