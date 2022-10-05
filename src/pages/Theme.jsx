@@ -8,9 +8,9 @@ import PurchaseButton from './PurchaseButton';
 const Theme = () => {
   const [price, setPrice] = useState(0);
   axios.get('https://api.plkey.app/theme/6').then(res => {
-    // console.log(res.data.data);
     setPrice(res.data.data.price);
   });
+
   return (
     <>
       <StyledTheme>
