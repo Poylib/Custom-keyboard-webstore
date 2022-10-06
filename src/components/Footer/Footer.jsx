@@ -1,15 +1,32 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-import ButtonOne from './ButtonOne';
+import Navs from './Navs';
 
 const Footer = () => {
+  const navTypes = [
+    {
+      name: '스토어',
+      imgUrl: '../src/assets/Footer/store-',
+    },
+    {
+      name: '충전소',
+      imgUrl: '../src/assets/Footer/charge-',
+    },
+    {
+      name: 'MY테마',
+      imgUrl: '../src/assets/Footer/heart-',
+    },
+    {
+      name: '설정',
+      imgUrl: '../src/assets/Footer/setting-',
+    },
+  ];
+
   return (
     <>
       <Wrapper>
-        <ButtonOne imgUrl={'../src/assets/Footer/store-solid.svg'} navName={'스토어'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gem-regular.svg'} navName={'충전소'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/heart-solid.svg'} navName={'MY테마'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gear-solid.svg'} navName={'설정'} />
+        <Navs navTypes={navTypes} />;
       </Wrapper>
     </>
   );

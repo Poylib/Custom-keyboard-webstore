@@ -61,8 +61,8 @@ const StyledTheme = styled.div`
   width: 768px;
   margin: 0 auto;
   padding-top: 30px;
-  --pink: rgba(255, 65, 125, 1);
-  --font-gray: rgba(145, 146, 153, 1);
+  --pink: #ff417d;
+  --font-gray: #919299;
 
   @media screen and (max-width: 768px) {
     width: 100%;
