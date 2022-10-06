@@ -108,14 +108,14 @@ const ItemCategory = styled.div`
     text-overflow: ellipsis;
   }
   .tag-container {
-    display: flex;
     padding: 10px 0px 10px 0px;
+    color: #aaabb3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     .tag {
-      display: block;
+      display: inline;
       color: #aaabb3;
       font-style: normal;
       font-weight: 400;
