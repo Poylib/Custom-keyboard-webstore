@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import signal from '../../assets/Header/signal-solid.svg';
+import wifi from '../../assets/Header/wifi-solid.svg';
+import battery from '../../assets/Header/battery-full-solid.svg';
+
 const TimeMobile = () => {
   const [currentHour, setCurrentHour] = useState(new window.Date().getHours());
   const [currentMin, setCurrentMin] = useState(new window.Date().getMinutes());
@@ -28,9 +32,9 @@ const TimeMobile = () => {
           </span>
         </TimeWrapper>
         <div>
-          <HeaderIcon src='../src/assets/Header/signal-solid.svg' />
-          <HeaderIcon src='../src/assets/Header/wifi-solid.svg' />
-          <HeaderIcon src='../src/assets/Header/battery-full-solid.svg' />
+          <HeaderIcon src={signal} />
+          <HeaderIcon src={wifi} />
+          <HeaderIcon src={battery} />
         </div>
       </Inner>
     </>

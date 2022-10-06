@@ -1,7 +1,19 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Navs = ({ navTypes }) => {
+import storeOn from '../../assets/Footer/store-on.svg';
+import storeOff from '../../assets/Footer/store-off.svg';
+
+import chargeOn from '../../assets/Footer/charge-on.svg';
+import chargeOff from '../../assets/Footer/charge-off.svg';
+
+import heartOn from '../../assets/Footer/heart-on.svg';
+import heartOff from '../../assets/Footer/heart-off.svg';
+
+import settingOn from '../../assets/Footer/setting-on.svg';
+import settingOff from '../../assets/Footer/setting-off.svg';
+
+const Navs = () => {
   const [isNav, setIsNav] = useState([true, false, false, false]);
 
   const changeNav = e => {
@@ -15,6 +27,29 @@ const Navs = ({ navTypes }) => {
     setIsNav(result);
   };
 
+  const navTypes = [
+    {
+      name: '스토어',
+      onUrl: storeOn,
+      offUrl: storeOff,
+    },
+    {
+      name: '충전소',
+      onUrl: chargeOn,
+      offUrl: chargeOff,
+    },
+    {
+      name: 'MY테마',
+      onUrl: heartOn,
+      offUrl: heartOff,
+    },
+    {
+      name: '설정',
+      onUrl: settingOn,
+      offUrl: settingOff,
+    },
+  ];
+
   return (
     <>
       {navTypes.map((navType, index) => {
@@ -24,7 +59,7 @@ const Navs = ({ navTypes }) => {
               id={index}
               onClick={changeNav}
               style={{
-                backgroundImage: `url(${navType.imgUrl}${isNav[index] ? 'on.svg' : 'off.svg'})`,
+                backgroundImage: `url(${isNav[index] ? navType.onUrl : navType.offUrl})`,
               }}
             />
             <span style={{ color: isNav[index] ? '#ff417d' : 'black' }}>{navType.name}</span>
