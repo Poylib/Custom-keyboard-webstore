@@ -1,16 +1,18 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const ButtonOne = ({ imgUrl, navName }) => {
+const ButtonOne = ({ id, navName, imgUrl, isNav, changeNav }) => {
   return (
     <>
       <Wrapper>
-        <button
+        <div
+          id={id}
+          onClick={changeNav}
           style={{
-            background: `url(${imgUrl}) no-repeat center`,
-            backgroundSize: 'contain',
+            backgroundImage: `url(${imgUrl}${isNav ? 'on.svg' : 'off.svg'})`,
           }}
         />
-        <span>{navName}</span>
+        <span style={{ color: isNav ? '#ff417d' : 'black' }}>{navName}</span>
       </Wrapper>
     </>
   );
@@ -22,11 +24,15 @@ const Wrapper = styled.div`
   align-items: center;
   width: 25%;
   height: 100%;
-  button {
+  div {
     border: none;
     width: 5.5vh;
     height: 4.5vh;
     margin-bottom: 1vh;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     cursor: pointer;
   }
   span {

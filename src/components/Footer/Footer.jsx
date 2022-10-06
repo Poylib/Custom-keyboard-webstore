@@ -1,15 +1,47 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import ButtonOne from './ButtonOne';
 
 const Footer = () => {
+  const navTypes = [
+    {
+      name: '스토어',
+      imgUrl: '../src/assets/Footer/store-',
+    },
+    {
+      name: '충전소',
+      imgUrl: '../src/assets/Footer/charge-',
+    },
+    {
+      name: 'MY테마',
+      imgUrl: '../src/assets/Footer/heart-',
+    },
+    {
+      name: '설정',
+      imgUrl: '../src/assets/Footer/setting-',
+    },
+  ];
+
+  const [isNav, setIsNav] = useState([true, false, false, false]);
+
+  const changeNav = e => {
+    const targetId = Number(e.target.id);
+    let result = [];
+
+    for (let i = 0; i < isNav.length; i++) {
+      i === targetId ? result.push(true) : result.push(false);
+    }
+
+    setIsNav(result);
+  };
+
   return (
     <>
       <Wrapper>
-        <ButtonOne imgUrl={'../src/assets/Footer/store-solid.svg'} navName={'스토어'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gem-regular.svg'} navName={'충전소'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/heart-solid.svg'} navName={'MY테마'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gear-solid.svg'} navName={'설정'} />
+        {navTypes.map((navType, index) => {
+          return <ButtonOne key={index} id={index} imgUrl={navType.imgUrl} navName={navType.name} isNav={isNav[index]} changeNav={changeNav} />;
+        })}
       </Wrapper>
     </>
   );
