@@ -1,7 +1,7 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import zem from '../assets/items/zem.png';
 import download from '../assets/items/download.png';
@@ -10,6 +10,11 @@ import Spinner from './Spinner';
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(1);
+  const preventRef = useRef(true);
+  const obsRef = useRef(null);
   const navigate = useNavigate();
   useEffect(() => {
     let url = '';
@@ -29,6 +34,19 @@ const Items = ({ type }) => {
         console.log(err);
       });
   }, [type]);
+
+  const getData = useCallback(async () => {
+    setLoad(true);
+    let url = '';
+    if (type === 'NEW') {
+      url = 'https://api.plkey.app/theme?category';
+    } else {
+      url = `https://api.plkey.app/theme?category=${type}`;
+    }
+    const {
+      data: { data },
+    } = await axios(url);
+  });
 
   const goDetail = themeId => {
     navigate(`/theme/${themeId}`);
@@ -72,9 +90,12 @@ const Items = ({ type }) => {
           );
         })}
       </Wrapper>
+      {load && <span>로딩중</span>}
+      <div ref={obsRef}>observer</div>
     </>
   );
 };
+
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
