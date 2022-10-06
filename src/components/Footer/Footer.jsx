@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import ButtonOne from './ButtonOne';
+import Navs from './Navs';
 
 const Footer = () => {
   const navTypes = [
@@ -23,25 +23,10 @@ const Footer = () => {
     },
   ];
 
-  const [isNav, setIsNav] = useState([true, false, false, false]);
-
-  const changeNav = e => {
-    const targetId = Number(e.target.id);
-    let result = [];
-
-    for (let i = 0; i < isNav.length; i++) {
-      i === targetId ? result.push(true) : result.push(false);
-    }
-
-    setIsNav(result);
-  };
-
   return (
     <>
       <Wrapper>
-        {navTypes.map((navType, index) => {
-          return <ButtonOne key={index} id={index} imgUrl={navType.imgUrl} navName={navType.name} isNav={isNav[index]} changeNav={changeNav} />;
-        })}
+        <Navs navTypes={navTypes} />;
       </Wrapper>
     </>
   );
