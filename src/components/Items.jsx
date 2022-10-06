@@ -59,11 +59,11 @@ const Items = ({ type }) => {
                 </div>
               </div>
               <div className='alignment'>
-                <div>
+                <div className='item-alignment'>
                   <img src={download} />
                   <span className='download'>{list.downloads.toLocaleString()}</span>
                 </div>
-                <div>
+                <div className='item-alignment'>
                   <img src={zem} />
                   <span className='price'>{list.price}</span>
                 </div>
@@ -81,7 +81,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 37px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
 const ItemCategory = styled.div`
@@ -93,10 +93,11 @@ const ItemCategory = styled.div`
   .image {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   .title {
     display: block;
+    padding-top: 10px;
     color: #42444c;
     font-style: normal;
     font-weight: 500;
@@ -107,18 +108,18 @@ const ItemCategory = styled.div`
     text-overflow: ellipsis;
   }
   .tag-container {
-    display: flex;
+    padding: 10px 0px 10px 0px;
+    color: #aaabb3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     .tag {
-      display: block;
+      display: inline;
       color: #aaabb3;
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
-      line-height: 18px;
       opacity: 1;
     }
   }
@@ -127,7 +128,11 @@ const ItemCategory = styled.div`
     display: flex;
     justify-content: space-between;
 
-    .download {
+    .item-alignment{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .download {
       margin-left: 5px;
       color: #aaabb3;
       font-style: normal;
@@ -141,6 +146,7 @@ const ItemCategory = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
     }
   }
 `;
