@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import GlobalStyle from './GlobalStyle';
 import Theme from './pages/Theme';
-import Keybord from './pages/keybord/Keybord';
+import Keybord from './components/keybord/Keybord';
 import Home from './pages/Home';
 
 
