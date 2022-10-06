@@ -1,15 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-import ButtonOne from './ButtonOne';
+import Navs from './Navs';
 
 const Footer = () => {
   return (
     <>
       <Wrapper>
-        <ButtonOne imgUrl={'../src/assets/Footer/store-solid.svg'} navName={'스토어'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gem-regular.svg'} navName={'충전소'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/heart-solid.svg'} navName={'MY테마'} />
-        <ButtonOne imgUrl={'../src/assets/Footer/gear-solid.svg'} navName={'설정'} />
+        <Navs />;
       </Wrapper>
     </>
   );

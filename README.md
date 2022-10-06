@@ -114,3 +114,4 @@ npm run dev
 
 ## ✅  shift 클릭시 쌍자음으로 바꾸고 쌍자음 클릭시 단자음으로 변경하는 기능 구현
 ![한영쌍자음](https://user-images.githubusercontent.com/87900492/194311922-575ea93c-1a2c-463f-b840-34cb0007267c.gif)
+

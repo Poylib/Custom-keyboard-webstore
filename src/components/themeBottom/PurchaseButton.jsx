@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
+import dia from '../../assets/Theme/dia.svg';
+
 const PurchaseButton = ({ price }) => {
   return (
     <PurchaseButtonWrapper>
       <StyledButton>
         <p>
-          구매 <img src='/images/icon_dia_type3.png' alt='icon' />
+          구매 <img src={dia} alt='icon' />
           {price}
         </p>
         <span>광고제거·무제한 사용</span>
@@ -74,9 +76,11 @@ const StyledButton = styled.button`
     }
 
     img {
+      width: 2.5vh;
       margin: 0 6px;
 
       @media screen and (min-width: 768px) {
+        width: 20px;
         margin: 0 10px;
       }
 
