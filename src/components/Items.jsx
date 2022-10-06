@@ -59,11 +59,11 @@ const Items = ({ type }) => {
                 </div>
               </div>
               <div className='alignment'>
-                <div>
+                <div className='item-alignment'>
                   <img src={download} />
                   <span className='download'>{list.downloads.toLocaleString()}</span>
                 </div>
-                <div>
+                <div className='item-alignment'>
                   <img src={zem} />
                   <span className='price'>{list.price}</span>
                 </div>
@@ -93,10 +93,11 @@ const ItemCategory = styled.div`
   .image {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   .title {
     display: block;
+    padding-top: 10px;
     color: #42444c;
     font-style: normal;
     font-weight: 500;
@@ -108,7 +109,7 @@ const ItemCategory = styled.div`
   }
   .tag-container {
     display: flex;
-    padding-top: 10px;
+    padding: 10px 0px 10px 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -126,9 +127,12 @@ const ItemCategory = styled.div`
   .alignment {
     display: flex;
     justify-content: space-between;
-    padding-top : 10px;
 
-    .download {
+    .item-alignment{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .download {
       margin-left: 5px;
       color: #aaabb3;
       font-style: normal;
@@ -142,6 +146,7 @@ const ItemCategory = styled.div`
       font-style: normal;
       font-weight: 500;
       font-size: 12px;
+    }
     }
   }
 `;
