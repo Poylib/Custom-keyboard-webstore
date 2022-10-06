@@ -9,14 +9,23 @@
   <br/>
   <br/>
 
-## 기술스택
+## 언어
 
 - JavaScript
 - React.js
-- Vite
-- StyledComponenet
-- Git
-- Slack
+  <br/>
+  <br/>
+
+## 라이브러리
+
+- styled-components
+- styled-reset
+- react-icons
+- react-router-dom
+- prettier
+- axios
+- hangul-js
+- swiper
   <br/>
   <br/>
 
@@ -59,7 +68,9 @@ npm run dev
 
 <br/>
 
-2. 브라우저에서 http://localhost:5173에 접속해주세요.
+2. 브라우저에서 http://localhost:3000/pre-onboarding-3team-1st/ 로 접속하거나,
+[배포주소](https://poylib.github.io/pre-onboarding-3team-1st/)로 접속해주시면 됩니다.
+
    <br/>
    <br/>
    <br/>
