@@ -12,11 +12,18 @@ const UserResponseArea = () => {
   const [userResponseCount, setUserResponseCount] = useState([0, 0, 0, 0]);
 
   const changeCount = e => {
-    let copy = [...userResponseCount];
+    const targetId = Number(e.target.id);
+    let result = [];
 
-    copy[e.target.id] === 0 ? (copy[e.target.id] += 1) : (copy[e.target.id] -= 1);
+    if (userResponseCount[targetId] === 0) {
+      for (let i = 0; i < userResponseCount.length; i++) {
+        i === targetId ? result.push(1) : result.push(0);
+      }
+    } else {
+      result = [0, 0, 0, 0];
+    }
 
-    setUserResponseCount(copy);
+    setUserResponseCount(result);
   };
 
   return (
