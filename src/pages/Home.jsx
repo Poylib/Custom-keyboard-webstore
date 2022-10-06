@@ -17,16 +17,12 @@ const Home = () => {
       </Container>
     </>
   );
-
 };
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (min-device-width: 769px) {
-    max-width: 650px;
-  }
-  @media screen and (min-device-width: 541px) and (max-device-width: 768px) {
+  @media screen and (min-device-width: 541px) {
     max-width: 768px;
   }
   min-height: 100vh;
