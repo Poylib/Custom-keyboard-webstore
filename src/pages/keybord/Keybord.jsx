@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import Hangul from 'hangul-js';
 
 const KeybordBlock = styled.div`
   display: flex;
@@ -57,6 +58,7 @@ const KeybordBlock = styled.div`
       box-shadow: 1px 2px 2px #ddd;
       font: 18px/1 'apple';
       border-radius: 7px;
+      border: none;
     }
     /* 숫자 */
     .number {
@@ -64,7 +66,7 @@ const KeybordBlock = styled.div`
       justify-content: center;
       align-items: center;
       width: 100%;
-      li {
+      button {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -83,7 +85,7 @@ const KeybordBlock = styled.div`
       align-items: center;
       flex-wrap: wrap;
       width: 100%;
-      li {
+      button {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -153,11 +155,7 @@ const Keybord = () => {
   const [uppercase, setUppercase] = useState(true);
   const [number, setNumber] = useState(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']);
   const [text, setText] = useState(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
-
-  // ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'];
-  // ['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'];
-  // ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
-  //['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+  const [keyValue, setKeyValue] = useState([]);
 
   const changeLanguage = () => {
     if (change == true) {
@@ -171,9 +169,9 @@ const Keybord = () => {
   const changeUppercase = () => {
     if (change == true) {
       if (uppercase == true) {
-        setText(['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ'])
+        setText(['ㅃ', 'ㅉ', 'ㄸ', 'ㄲ', 'ㅆ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅒ', 'ㅖ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
       } else {
-        setText( ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
+        setText(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
       }
     } else {
       if (uppercase == false) {
@@ -182,14 +180,18 @@ const Keybord = () => {
         setText(['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']);
       }
     }
-    return setUppercase(!uppercase)
+    return setUppercase(!uppercase);
   };
+
+
+console.log('글자합치기',Hangul.assemble(keyValue));
+console.log('글자쪼개기',Hangul.disassemble(keyValue));
 
   return (
     <KeybordBlock>
       <div className='keybord-inner-box'>
         <div className='keybord-input-box'>
-          <input type='text' />
+          <input type='text' id='textValue' placeholder='키를 입력해보세요' value={Hangul.assemble(keyValue)} ></input>
         </div>
         <div className='keybord-header-box'>
           <span className='btn-1'>
@@ -214,23 +216,40 @@ const Keybord = () => {
         {/* 숫자키 */}
         <ul className='number'>
           {number &&
-            number.map((number, index) => {
+            number.map((text, index) => {
               return (
-                <li className='key' key={index}>
-                  {number}
-                </li>
+                <button
+                  className='key'
+                  key={index}
+                  value={text}
+                  onClick={() => {
+                    let copy = [...keyValue, text];
+                    setKeyValue(copy);
+                    console.log(keyValue);
+                  }}
+                >
+                  {text}
+                </button>
               );
             })}
         </ul>
-
         {/* 단어키 */}
         <ul className='textkey'>
           {text &&
             text.map((text, index) => {
               return (
-                <li className='key' key={index}>
+                <button
+                  className='key'
+                  key={index}
+                  value={text}
+                  onClick={() => {
+                    let copy = [...keyValue, text];
+                    setKeyValue(copy);
+                    console.log(keyValue);
+                  }}
+                >
                   {text}
-                </li>
+                </button>
               );
             })}
         </ul>
@@ -247,7 +266,11 @@ const Keybord = () => {
             </span>
           </li>
           <li id='back'>
-            <span className='key back'>&#8678;</span>
+            <span className='key back' onClick={()=>{
+              let copy = [...keyValue];
+              copy.pop()
+              setKeyValue(copy)
+            }}>&#8678;</span>
           </li>
         </ul>
         <ul className='funkey'>
