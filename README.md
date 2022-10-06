@@ -115,3 +115,20 @@ npm run dev
 ## ✅  shift 클릭시 쌍자음으로 바꾸고 쌍자음 클릭시 단자음으로 변경하는 기능 구현
 ![한영쌍자음](https://user-images.githubusercontent.com/87900492/194311922-575ea93c-1a2c-463f-b840-34cb0007267c.gif)
 
+
+# 팀원소개
+### ✅ 프론트엔드 구현
+- 깃허브 https://github.com/Goohyun3436
+- 블로그 https://velog.io/@3436rngus
+### ✅ 프론트엔드 박찬영
+- 깃허브 https://github.com/Poylib
+- 블로그 https://poylib.tistory.com/
+### ✅ 프론트엔드 이동호
+- 깃허브 https://github.com/cratuss
+- 블로그 https://cratuss.tistory.com/
+### ✅ 프론트엔드 이유나
+- 깃허브 https://github.com/yoon1257
+- 블로그 https://velog.io/@yoon_reve
+### ✅ 프론트엔드 최승철
+- 깃허브 https://github.com/tmdcjf152
+- 블로그 https://choa-ri.tistory.com/
