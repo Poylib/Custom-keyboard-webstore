@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Hangul from 'hangul-js';
 
@@ -142,13 +142,6 @@ const KeybordBlock = styled.div`
     }
   }
 `;
-//  * 쉬프트/백스페이스/한영키/스페이스/닷/문단변경 버튼은 따로 map을 돌리면 안될것같음 onClick 이벤트가 따로 들어가야 되기 때문(?)
-//   1. 스테이트에 빈배열을 만들고
-//   2. 단어 onClick시 해당 단어를 스테이트 빈배열에 추가 (array.push)
-//   3. 인풋에 값을 넣을때는 Hangul.assemble(arr:string[]) 이용해서 배열에 값넣기
-//   4. 인풋에서 값을 삭제할때는 Hangul.disassemble(str:string, grouped:boolean = false) 을 이용해 배열뒤에서부터 제거 (array.pop 사용)
-//   5. 쉬프트 클릭시 한글은 쌍자음 영어는 대문자로 스테이트 값 변경 (트루/펄스로 한/영 비교 한뒤에 스테이트 변경)
-//   6. 한/영 키 누를시 (한/영 스테이트 변경)
 
 const Keybord = () => {
   const [change, setChange] = useState(true);
@@ -183,15 +176,11 @@ const Keybord = () => {
     return setUppercase(!uppercase);
   };
 
-
-console.log('글자합치기',Hangul.assemble(keyValue));
-console.log('글자쪼개기',Hangul.disassemble(keyValue));
-
   return (
     <KeybordBlock>
       <div className='keybord-inner-box'>
         <div className='keybord-input-box'>
-          <input type='text' id='textValue' placeholder='키를 입력해보세요' value={Hangul.assemble(keyValue)} ></input>
+          <input type='text' id='textValue' placeholder='키를 입력해보세요' value={Hangul.assemble(keyValue)}></input>
         </div>
         <div className='keybord-header-box'>
           <span className='btn-1'>
@@ -225,7 +214,6 @@ console.log('글자쪼개기',Hangul.disassemble(keyValue));
                   onClick={() => {
                     let copy = [...keyValue, text];
                     setKeyValue(copy);
-                    console.log(keyValue);
                   }}
                 >
                   {text}
@@ -245,7 +233,7 @@ console.log('글자쪼개기',Hangul.disassemble(keyValue));
                   onClick={() => {
                     let copy = [...keyValue, text];
                     setKeyValue(copy);
-                    console.log(keyValue);
+                    setText(['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ', 'ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ', 'ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']);
                   }}
                 >
                   {text}
@@ -259,18 +247,23 @@ console.log('글자쪼개기',Hangul.disassemble(keyValue));
             <span
               className='key shift'
               onClick={() => {
-                changeUppercase();
+                changeUppercase(!uppercase);
               }}
             >
               &#8679;
             </span>
           </li>
           <li id='back'>
-            <span className='key back' onClick={()=>{
-              let copy = [...keyValue];
-              copy.pop()
-              setKeyValue(copy)
-            }}>&#8678;</span>
+            <span
+              className='key back'
+              onClick={() => {
+                let copy = [...keyValue];
+                copy.pop();
+                setKeyValue(copy);
+              }}
+            >
+              &#8678;
+            </span>
           </li>
         </ul>
         <ul className='funkey'>
@@ -286,16 +279,38 @@ console.log('글자쪼개기',Hangul.disassemble(keyValue));
             ></span>
           </li>
           <li id='emoji'>
-            <span className='key emoji'>:-)</span>
+            <span
+              className='key emoji'
+              onClick={() => {
+                let emogi = ':-)';
+                let copy = [...keyValue, emogi];
+                setKeyValue(copy);
+              }}
+            >
+              :-)
+            </span>
           </li>
           <li id='space'>
-            <span className='key space'></span>
+            <span className='key space' 
+                          onClick={() => {
+                            let space = ' ';
+                            let copy = [...keyValue, space];
+                            setKeyValue(copy);
+                          }}></span>
           </li>
           <li id='dot'>
-            <span className='key'>.</span>
+            <span className='key'               onClick={() => {
+                let dot = '.';
+                let copy = [...keyValue, dot];
+                setKeyValue(copy);
+              }}>.</span>
           </li>
           <li id='space-line'>
-            <span className='key space-line'>&#9166;</span>
+            <span className='key space-line'               onClick={() => {
+                let emogi = `\n`;
+                let copy = [...keyValue, emogi];
+                setKeyValue(copy);
+              }}>&#9166;</span>
           </li>
         </ul>
       </div>
