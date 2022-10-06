@@ -248,13 +248,12 @@ const KeybordBlock = styled.div`
   }
   .keybord-inner-box {
     position: relative;
-    top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 768px;
-    height: 100%;
+    height: 900px;
     padding: 10px;
     border: 1px solid #000;
     background: #efeef3;
@@ -273,6 +272,9 @@ const KeybordBlock = styled.div`
       align-items: center;
       flex-direction: column;
       .all-app-text {
+        display: flex;
+        justify-content: center;
+        width: 100%;
         margin-bottom: 20px;
         font: bold 30px/1 'apple';
         .pink {
@@ -394,7 +396,6 @@ const KeybordBlock = styled.div`
       justify-content: center;
       align-items: center;
       width: 100%;
-      margin-bottom: 100px;
       li {
         display: flex;
         justify-content: center;
