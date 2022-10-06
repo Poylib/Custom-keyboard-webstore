@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <>
       <Wrapper>
-        <Navs />;
+        <Navs />
       </Wrapper>
     </>
   );
