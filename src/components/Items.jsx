@@ -40,8 +40,8 @@ const Items = ({ type }) => {
   }
 
   return (
-    <>
-      <Wrapper>
+    <StyledItems>
+      <div className='wrapper'>
         {dataList.map(list => {
           return (
             <ItemCategory key={list._id}>
@@ -73,20 +73,22 @@ const Items = ({ type }) => {
             </ItemCategory>
           );
         })}
-      </Wrapper>
-      {load && <span>로딩중</span>}
+      </div>
+      {/* {load && <span>로딩중</span>} */}
       <div ref={obsRef}>observer</div>
-    </>
+    </StyledItems>
   );
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+const StyledItems = styled.div`
   margin-top: 37px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
 `;
 
 const ItemCategory = styled.div`
