@@ -81,7 +81,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 37px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
 const ItemCategory = styled.div`
