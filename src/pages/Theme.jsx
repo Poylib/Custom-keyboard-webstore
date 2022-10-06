@@ -4,11 +4,11 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import Spinner from '../components/Spinner';
-import Contents from '../components/themeComponents/Contents';
-import UserResponseArea from './UserResponseArea';
-import InquiryButton from './InquiryButton';
-import PurchaseButton from './PurchaseButton';
-import DetailTop from './detail/DetailTop';
+import Contents from '../components/themePage/Contents';
+import UserResponseArea from '../components/themeBottom/UserResponseArea';
+import InquiryButton from '../components/themeBottom/InquiryButton';
+import PurchaseButton from '../components/themeBottom/PurchaseButton';
+import DetailTop from '../components/detail/DetailTop';
 
 const Theme = () => {
   const [loding, setLoding] = useState(false);
