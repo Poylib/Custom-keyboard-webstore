@@ -19,7 +19,7 @@ const Navs = ({ navTypes }) => {
     <>
       {navTypes.map((navType, index) => {
         return (
-          <Wrapper>
+          <Wrapper key={index}>
             <div
               id={index}
               onClick={changeNav}
