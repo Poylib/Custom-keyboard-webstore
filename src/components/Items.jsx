@@ -60,7 +60,7 @@ const Items = ({ type }) => {
               <div className='alignment'>
                 <div>
                   <img src={download} />
-                  <span className='download'>{list.downloads}</span>
+                  <span className='download'>{list.downloads.toLocaleString()}</span>
                 </div>
                 <div>
                   <img src={zem} />
@@ -77,15 +77,15 @@ const Items = ({ type }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   margin-top: 37px;
   margin-bottom: 20px;
 `;
 
 const ItemCategory = styled.div`
-  width: 49%;
-  padding: 0 12px 12px 14px;
+  width: 48%;
+  padding-bottom: 14px;
   div {
     cursor: pointer;
   }
