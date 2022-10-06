@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 import zem from '../assets/items/zem.png';
 import download from '../assets/items/download.png';
 import Spinner from './Spinner';
-import { useNavigate } from 'react-router-dom';
 
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);

@@ -8,7 +8,7 @@ import Contents from '../components/themePage/Contents';
 import UserResponseArea from '../components/themeBottom/UserResponseArea';
 import InquiryButton from '../components/themeBottom/InquiryButton';
 import PurchaseButton from '../components/themeBottom/PurchaseButton';
-import DetailTop from '../components/detail/DetailTop';
+import DetailTop from '../components/themeTop/DetailTop';
 
 const Theme = () => {
   const [loding, setLoding] = useState(false);

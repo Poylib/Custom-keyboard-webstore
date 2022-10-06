@@ -1,6 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header/Header';
 import GlobalStyle from './GlobalStyle';
-import { Routes, Route } from 'react-router-dom';
 import Theme from './pages/Theme';
 import Home from './pages/Home';
 import Korean from './components/keybord/Korean';

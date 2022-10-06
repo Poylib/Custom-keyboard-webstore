@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { NavLink } from 'react-router-dom';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
 
