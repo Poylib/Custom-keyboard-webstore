@@ -1,7 +1,7 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import zem from '../assets/items/zem.png';
 import download from '../assets/items/download.png';
@@ -10,20 +10,16 @@ import Spinner from './Spinner';
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [lastLi, setLastLi] = useState(null);
   const [page, setPage] = useState(0);
+  const [lastLi, setLastLi] = useState(null);
   const [end, setEnd] = useState(false);
-  const obsRef = useRef(null);
   const navigate = useNavigate();
 
-  console.log('render');
-
   useEffect(() => {
-    setDataList([]);
+    setLoading(true);
     setPage(0);
     setEnd(false);
     (async () => {
-      setLoading(true);
       let url = '';
       if (type === 'NEW') {
         url = 'https://api.plkey.app/theme?category';
@@ -34,33 +30,10 @@ const Items = ({ type }) => {
         data: { data },
       } = await axios(url);
       const sliced = data.slice(0, 8);
-      if (sliced.length < 8) setEnd(true);
-      setDataList(sliced);
+      setDataList([...sliced]);
       setLoading(false);
     })();
   }, [type]);
-
-  useEffect(() => {
-    if (!end) {
-      (async () => {
-        let url = '';
-        if (type === 'NEW') {
-          url = 'https://api.plkey.app/theme?category';
-        } else {
-          url = `https://api.plkey.app/theme?category=${type}`;
-        }
-        setLoading(true);
-        const {
-          data: { data },
-        } = await axios(url);
-        const sliced = data.slice(page * 8, (page + 1) * 8);
-        if (sliced.length < 8) setEnd(true);
-        setDataList([...dataList, ...sliced]);
-        setLoading(false);
-      })();
-    }
-  }, [page]);
-
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -73,13 +46,34 @@ const Items = ({ type }) => {
     lastLi && observer.observe(lastLi);
   }, [lastLi]);
 
+  useEffect(() => {
+    if (!end) {
+      (async () => {
+        setLoading(true);
+        let url = '';
+        if (type === 'NEW') {
+          url = 'https://api.plkey.app/theme?category';
+        } else {
+          url = `https://api.plkey.app/theme?category=${type}`;
+        }
+        const {
+          data: { data },
+        } = await axios(url);
+        const sliced = data.slice(page * 8, (page + 1) * 8);
+        if (sliced.length < 8) setEnd(true);
+        setDataList([...dataList, ...sliced]);
+        setLoading(false);
+      })();
+    }
+  }, [page]);
+
   const goDetail = themeId => {
     navigate(`/theme/${themeId}`);
   };
 
-  if (loading) {
-    return <Spinner />;
-  }
+  // if (loading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <StyledItems>
@@ -87,7 +81,7 @@ const Items = ({ type }) => {
         {!!dataList.length &&
           dataList.map((list, index) => {
             return (
-              <ItemCategory key={index} ref={dataList.length - 2 === index ? setLastLi : null}>
+              <ItemCategory key={index} ref={dataList.length - 1 === index ? setLastLi : null}>
                 <div onClick={() => goDetail(list.themeId)}>
                   <div>
                     <img className='image' src={list.imageUrl} />
@@ -116,9 +110,8 @@ const Items = ({ type }) => {
               </ItemCategory>
             );
           })}
+        {loading && <Spinner fixed={false} />}
       </div>
-      {/* {load && <span>로딩중</span>} */}
-      <div ref={obsRef}>observer</div>
     </StyledItems>
   );
 };
