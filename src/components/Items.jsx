@@ -10,10 +10,6 @@ import Spinner from './Spinner';
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [list, setList] = useState([]);
-  const [page, setPage] = useState(1);
-  const [load, setLoad] = useState(1);
-  const preventRef = useRef(true);
   const obsRef = useRef(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,19 +31,6 @@ const Items = ({ type }) => {
       });
   }, [type]);
 
-  const getData = useCallback(async () => {
-    setLoad(true);
-    let url = '';
-    if (type === 'NEW') {
-      url = 'https://api.plkey.app/theme?category';
-    } else {
-      url = `https://api.plkey.app/theme?category=${type}`;
-    }
-    const {
-      data: { data },
-    } = await axios(url);
-  });
-
   const goDetail = themeId => {
     navigate(`/theme/${themeId}`);
   };
@@ -55,6 +38,7 @@ const Items = ({ type }) => {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <>
       <Wrapper>
