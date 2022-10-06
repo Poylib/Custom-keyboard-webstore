@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
+import dia from '../../assets/Theme/dia.svg';
+
 const PurchaseButton = ({ price }) => {
   return (
     <PurchaseButtonWrapper>
       <StyledButton>
         <p>
-          구매 <img src='/images/icon_dia_type3.png' alt='icon' />
+          구매 <img src={dia} alt='icon' />
           {price}
         </p>
         <span>광고제거·무제한 사용</span>
@@ -54,7 +56,6 @@ const StyledButton = styled.button`
     border-radius: 40px;
   }
 
-
   p {
     display: flex;
     align-items: center;
@@ -74,12 +75,13 @@ const StyledButton = styled.button`
     }
 
     img {
+      width: 2.5vh;
       margin: 0 6px;
 
       @media screen and (min-width: 768px) {
+        width: 20px;
         margin: 0 10px;
       }
-
     }
   }
 
@@ -87,7 +89,6 @@ const StyledButton = styled.button`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-
 
     @media screen and (min-width: 540px) and (max-width: 768px) {
       font-size: 13px;
@@ -97,6 +98,5 @@ const StyledButton = styled.button`
       font-size: 16px;
       line-height: 20px;
     }
-
   }
 `;

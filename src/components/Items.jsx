@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
-import zem from '../assets/items/zem.png';
+import dia from '../assets/Theme/dia.svg';
 import download from '../assets/items/download.png';
 import Spinner from './Spinner';
 
@@ -103,7 +103,7 @@ const Items = ({ type }) => {
                     <span className='download'>{list.downloads.toLocaleString()}</span>
                   </div>
                   <div className='item-alignment'>
-                    <img src={zem} />
+                    <img src={dia} />
                     <span className='price'>{list.price}</span>
                   </div>
                 </div>
