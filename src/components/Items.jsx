@@ -10,26 +10,68 @@ import Spinner from './Spinner';
 const Items = ({ type }) => {
   const [dataList, setDataList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [lastLi, setLastLi] = useState(null);
+  const [page, setPage] = useState(0);
+  const [end, setEnd] = useState(false);
   const obsRef = useRef(null);
   const navigate = useNavigate();
+
+  console.log('render');
+
   useEffect(() => {
-    let url = '';
-    if (type === 'NEW') {
-      url = 'https://api.plkey.app/theme?category';
-    } else {
-      url = `https://api.plkey.app/theme?category=${type}`;
-    }
-    setLoading(true);
-    axios
-      .get(url)
-      .then(res => {
-        setDataList(res.data.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    setDataList([]);
+    setPage(0);
+    setEnd(false);
+    (async () => {
+      setLoading(true);
+      let url = '';
+      if (type === 'NEW') {
+        url = 'https://api.plkey.app/theme?category';
+      } else {
+        url = `https://api.plkey.app/theme?category=${type}`;
+      }
+      const {
+        data: { data },
+      } = await axios(url);
+      const sliced = data.slice(0, 8);
+      if (sliced.length < 8) setEnd(true);
+      setDataList(sliced);
+      setLoading(false);
+    })();
   }, [type]);
+
+  useEffect(() => {
+    if (!end) {
+      (async () => {
+        let url = '';
+        if (type === 'NEW') {
+          url = 'https://api.plkey.app/theme?category';
+        } else {
+          url = `https://api.plkey.app/theme?category=${type}`;
+        }
+        setLoading(true);
+        const {
+          data: { data },
+        } = await axios(url);
+        const sliced = data.slice(page * 8, (page + 1) * 8);
+        if (sliced.length < 8) setEnd(true);
+        setDataList([...dataList, ...sliced]);
+        setLoading(false);
+      })();
+    }
+  }, [page]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0 && entry.isIntersecting) {
+          observer.disconnect();
+          setPage(page + 1);
+        }
+      });
+    });
+    lastLi && observer.observe(lastLi);
+  }, [lastLi]);
 
   const goDetail = themeId => {
     navigate(`/theme/${themeId}`);
@@ -42,37 +84,38 @@ const Items = ({ type }) => {
   return (
     <StyledItems>
       <div className='wrapper'>
-        {dataList.map(list => {
-          return (
-            <ItemCategory key={list._id}>
-              <div onClick={() => goDetail(list.themeId)}>
-                <div>
-                  <img className='image' src={list.imageUrl} />
+        {!!dataList.length &&
+          dataList.map((list, index) => {
+            return (
+              <ItemCategory key={index} ref={dataList.length - 2 === index ? setLastLi : null}>
+                <div onClick={() => goDetail(list.themeId)}>
+                  <div>
+                    <img className='image' src={list.imageUrl} />
+                  </div>
+                  <div className='title'>{list.name}</div>
+                  <div className='tag-container'>
+                    {list.hashtag.map(tag => {
+                      return (
+                        <div key={tag} className='tag'>
+                          #{tag}&nbsp;
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className='title'>{list.name}</div>
-                <div className='tag-container'>
-                  {list.hashtag.map(tag => {
-                    return (
-                      <div key={tag} className='tag'>
-                        #{tag}&nbsp;
-                      </div>
-                    );
-                  })}
+                <div className='alignment'>
+                  <div className='item-alignment'>
+                    <img src={download} />
+                    <span className='download'>{list.downloads.toLocaleString()}</span>
+                  </div>
+                  <div className='item-alignment'>
+                    <img src={zem} />
+                    <span className='price'>{list.price}</span>
+                  </div>
                 </div>
-              </div>
-              <div className='alignment'>
-                <div className='item-alignment'>
-                  <img src={download} />
-                  <span className='download'>{list.downloads.toLocaleString()}</span>
-                </div>
-                <div className='item-alignment'>
-                  <img src={zem} />
-                  <span className='price'>{list.price}</span>
-                </div>
-              </div>
-            </ItemCategory>
-          );
-        })}
+              </ItemCategory>
+            );
+          })}
       </div>
       {/* {load && <span>로딩중</span>} */}
       <div ref={obsRef}>observer</div>
