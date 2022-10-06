@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
+import title from '../../assets/MainNav/Title.png';
+import search from '../../assets/MainNav/Search.png';
+
 const TitleSearch = () => {
   return (
     <>
       <Inner>
         <div>
-          <HeaderIcon src='../src/assets/MainNav/Title.png' />
+          <HeaderIcon src={title} />
         </div>
         <div>
-          <HeaderIcon src='../src/assets/MainNav/Search.png' />
+          <HeaderIcon src={search} />
         </div>
       </Inner>
     </>

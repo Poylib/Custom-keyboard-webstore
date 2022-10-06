@@ -4,29 +4,10 @@ import styled from 'styled-components';
 import Navs from './Navs';
 
 const Footer = () => {
-  const navTypes = [
-    {
-      name: '스토어',
-      imgUrl: '../src/assets/Footer/store-',
-    },
-    {
-      name: '충전소',
-      imgUrl: '../src/assets/Footer/charge-',
-    },
-    {
-      name: 'MY테마',
-      imgUrl: '../src/assets/Footer/heart-',
-    },
-    {
-      name: '설정',
-      imgUrl: '../src/assets/Footer/setting-',
-    },
-  ];
-
   return (
     <>
       <Wrapper>
-        <Navs navTypes={navTypes} />;
+        <Navs />;
       </Wrapper>
     </>
   );
