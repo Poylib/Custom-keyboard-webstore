@@ -71,10 +71,6 @@ const Items = ({ type }) => {
     navigate(`/theme/${themeId}`);
   };
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
-
   return (
     <StyledItems>
       <div className='wrapper'>
