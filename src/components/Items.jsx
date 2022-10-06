@@ -108,6 +108,7 @@ const ItemCategory = styled.div`
   }
   .tag-container {
     display: flex;
+    padding-top: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -118,7 +119,6 @@ const ItemCategory = styled.div`
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
-      line-height: 18px;
       opacity: 1;
     }
   }
@@ -126,6 +126,7 @@ const ItemCategory = styled.div`
   .alignment {
     display: flex;
     justify-content: space-between;
+    padding-top : 10px;
 
     .download {
       margin-left: 5px;
