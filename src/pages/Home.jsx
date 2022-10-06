@@ -17,6 +17,7 @@ const Home = () => {
       </Container>
     </>
   );
+
 };
 
 const Container = styled.div`

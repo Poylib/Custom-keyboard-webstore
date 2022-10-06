@@ -8,6 +8,7 @@ export default InquiryButton;
 
 const StyledButton = styled.button`
   width: 90%;
+
   margin-top: 24px;
   padding: 8px 0;
   color: var(--pink);
@@ -31,4 +32,5 @@ const StyledButton = styled.button`
     border-radius: 40px;
     font-size: 20px;
   }
+
 `;

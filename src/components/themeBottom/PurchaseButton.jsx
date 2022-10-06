@@ -54,6 +54,7 @@ const StyledButton = styled.button`
     border-radius: 40px;
   }
 
+
   p {
     display: flex;
     align-items: center;
@@ -78,6 +79,7 @@ const StyledButton = styled.button`
       @media screen and (min-width: 768px) {
         margin: 0 10px;
       }
+
     }
   }
 
@@ -85,6 +87,7 @@ const StyledButton = styled.button`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
+
 
     @media screen and (min-width: 540px) and (max-width: 768px) {
       font-size: 13px;
@@ -94,5 +97,6 @@ const StyledButton = styled.button`
       font-size: 16px;
       line-height: 20px;
     }
+
   }
 `;

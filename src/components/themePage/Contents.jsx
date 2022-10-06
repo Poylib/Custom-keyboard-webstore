@@ -33,7 +33,9 @@ const StyledContents = styled.div`
     margin: 24px 18px 40px 18px;
     height: 7.5vh;
     background-color: #d9d9d9;
+
     cursor: pointer;
+
   }
   .guide-box {
     display: flex;
@@ -54,7 +56,9 @@ const StyledContents = styled.div`
       margin-top: 3px;
       border-bottom: 2px solid #4b4e57;
       color: #4b4e57;
+
       cursor: pointer;
+
     }
   }
 `;
@@ -66,7 +70,9 @@ const ImgBox = styled.div`
 
 const ImgList = styled.img`
   width: 33%;
+
   cursor: pointer;
+
   content: url(${props => props.url});
   @media screen and (min-width: 768px) {
     width: 24%;

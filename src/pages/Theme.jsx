@@ -33,6 +33,8 @@ const Theme = () => {
     })();
   }, []);
 
+
+
   if (loding) {
     return <Spinner />;
   }
@@ -60,11 +62,13 @@ const StyledTheme = styled.div`
   align-items: center;
   width: 768px;
   margin: 0 auto;
+
   padding-top: 30px;
   --pink: #ff417d;
   --font-gray: #919299;
 
   @media screen and (max-width: 768px) {
+
     width: 100%;
   }
 `;

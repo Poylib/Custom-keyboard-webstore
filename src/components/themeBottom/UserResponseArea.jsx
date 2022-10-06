@@ -1,5 +1,7 @@
-import styled from 'styled-components';
+
 import { useState } from 'react';
+import styled from 'styled-components';
+
 
 const UserResponseArea = () => {
   const figures = [
@@ -59,7 +61,6 @@ const ResponeseBox = styled.div`
   color: ${props => (props.isSelected ? 'var(--pink)' : 'var(--font-gray)')};
   text-align: center;
   cursor: pointer;
-
   .icon,
   .comment,
   .count {
@@ -92,19 +93,11 @@ const ResponeseBox = styled.div`
       font-size: 17px;
       line-height: 38px;
     }
+
   }
 
   .count {
     font-size: 10px;
     line-height: 14px;
-
-    @media screen and (min-width: 540px) and (max-width: 768px) {
-      font-size: 12px;
-      line-height: 20px;
-    }
-
-    @media screen and (min-width: 768px) {
-      font-size: 15px;
-    }
   }
 `;

@@ -1,15 +1,18 @@
 import styled from 'styled-components';
-
 import { NavLink } from 'react-router-dom';
 import { FiUpload } from 'react-icons/fi';
 import { BiArrowBack } from 'react-icons/bi';
+import { useState } from 'react';
+import Keybord from '../keybord/Keybord';
 
 const DetailTop = ({ props }) => {
   const { hashtag, imageUrl, name, creator } = props;
+  const[toggle, setToggle]=useState(false)
 
   return (
+    <>
     <DetailTopBlock>
-      <div className='detail-inner-box'>
+      <div className='detail-inner-box' >
         {/* 뒤로가기버튼 */}
         <div className='detail-header-box'>
           <NavLink to='/' className='back-btn'>
@@ -18,7 +21,7 @@ const DetailTop = ({ props }) => {
         </div>
         {/* 상품이미지 */}
         <div className='detail-item-img-box'>
-          <img src={imageUrl} alt='' />
+          <img src={imageUrl} alt={name} onClick={()=>{setToggle(!toggle)}}/>
         </div>
         {/* 상품텍스트 */}
         <div className='detail-item-text-box'>
@@ -41,8 +44,11 @@ const DetailTop = ({ props }) => {
         </div>
       </div>
     </DetailTopBlock>
+    {toggle == true && <Keybord toggle={toggle} setToggle={setToggle}/>}
+    </>
   );
 };
+
 export default DetailTop;
 
 const DetailTopBlock = styled.div`
@@ -53,6 +59,7 @@ const DetailTopBlock = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     width: 100%;
     height: 100%;
     /* 뒤로가기버튼 */
