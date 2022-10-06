@@ -15,8 +15,6 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/theme/:id' element={<Theme />} />
         <Route path='/test' element={<Keybord />} />
-
-
       </Routes>
     </>
   );
