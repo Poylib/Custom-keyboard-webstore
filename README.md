@@ -44,7 +44,7 @@ https://nodejs.org/
 2. 리포지토리를 클론해주세요.<br/>
 
 ```
-git clone https://github.com/wecode-bootcamp-korea/justcode-6-1st-pro-coders-front.git
+git clone https://github.com/Poylib/pre-onboarding-3team-1st.git
 ```
 
 <br/>
