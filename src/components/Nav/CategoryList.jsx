@@ -56,8 +56,8 @@ const Wrapper = styled.div`
   }
   .swiper-slide {
     width: auto;
-    paddingbottom: 10px;
-    paddingright: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
   }
 `;
 
