@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Hangul from 'hangul-js';
 import { FaFacebookMessenger } from 'react-icons/fa';
@@ -247,7 +247,7 @@ const KeybordBlock = styled.div`
   height: 100%;
   margin: 0 auto;
   background: #00000083;
-  .close{
+  .close {
     font-size: 15px;
   }
   .keybord-inner-box {
@@ -418,5 +418,4 @@ const KeybordBlock = styled.div`
       }
     }
   }
-
 `;

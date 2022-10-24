@@ -1,7 +1,7 @@
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import dia from '../assets/Theme/dia.svg';
 import download from '../assets/items/download.png';
@@ -34,6 +34,7 @@ const Items = ({ type }) => {
       setLoading(false);
     })();
   }, [type]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -59,8 +60,8 @@ const Items = ({ type }) => {
         const {
           data: { data },
         } = await axios(url);
-        const sliced = data.slice(page * 8, (page + 1) * 8);
-        if (sliced.length < 8) setEnd(true);
+        const sliced = data.slice(page * 16, (page + 1) * 16);
+        if (sliced.length < 16) setEnd(true);
         setDataList([...dataList, ...sliced]);
         setLoading(false);
       })();
@@ -77,7 +78,7 @@ const Items = ({ type }) => {
         {!!dataList.length &&
           dataList.map((list, index) => {
             return (
-              <ItemCategory key={index} ref={dataList.length - 1 === index ? setLastLi : null}>
+              <ItemCategory key={`${index}+${list.themeId}`} ref={dataList.length - 1 === index ? setLastLi : null}>
                 <div onClick={() => goDetail(list.themeId)}>
                   <div>
                     <img className='image' src={list.imageUrl} />

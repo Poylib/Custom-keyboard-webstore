@@ -28,25 +28,23 @@ const CategoryList = ({ type, setType }) => {
   }, []);
 
   return (
-    <>
-      <Wrapper>
-        <Swiper slidesPerView={'auto'} style={{}}>
-          {category.map(element => {
-            return (
-              <SwiperSlide
-                key={element}
-                onClick={() => {
-                  setType(element);
-                }}
-                style={{ width: 'auto', paddingBottom: '10px', paddingRight: '20px' }}
-              >
-                <CategoryOne style={type === element ? selectCss : nonSelectCss}>{element}</CategoryOne>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Swiper slidesPerView={'auto'} style={{}}>
+        {category.map(element => {
+          return (
+            <SwiperSlide
+              key={element}
+              onClick={() => {
+                setType(element);
+              }}
+              style={{ width: 'auto', paddingBottom: '10px', paddingRight: '20px' }}
+            >
+              <CategoryOne style={type === element ? selectCss : nonSelectCss}>{element}</CategoryOne>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </Wrapper>
   );
 };
 
@@ -58,8 +56,8 @@ const Wrapper = styled.div`
   }
   .swiper-slide {
     width: auto;
-    paddingbottom: 10px;
-    paddingright: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
   }
 `;
 
