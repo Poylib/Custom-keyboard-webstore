@@ -5,7 +5,6 @@ import Theme from './pages/Theme';
 import Keybord from './components/keybord/Keybord';
 import Home from './pages/Home';
 
-
 function App() {
   return (
     <>

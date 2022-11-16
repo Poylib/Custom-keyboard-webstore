@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
